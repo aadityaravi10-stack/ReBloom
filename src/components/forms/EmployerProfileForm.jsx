@@ -120,8 +120,8 @@ export default function EmployerProfileForm({ onSuccess }) {
         </div>
       )}
 
-      <div className="bg-white p-6 rounded-3xl border border-purple-100 shadow-soft space-y-4">
-        <h3 className="text-base font-bold text-gray-900 border-b border-purple-50 pb-3 flex items-center gap-2">
+      <div className="bg-white dark:bg-[#130E24] p-6 rounded-3xl border border-purple-100 dark:border-purple-800/40 shadow-soft dark:shadow-none space-y-4">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white border-b border-purple-50 dark:border-purple-900/40 pb-3 flex items-center gap-2">
           <Building2 className="w-5 h-5 text-purple-600" />
           Organization Information
         </h3>

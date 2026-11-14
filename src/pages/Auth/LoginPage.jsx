@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Sparkles, AlertCircle, ArrowRight, Lock } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Sparkles, AlertCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import Input from '../../components/common/Input';
 import Button from '../../components/common/Button';
 import Card from '../../components/common/Card';
+import ThemeToggle from '../../components/common/ThemeToggle';
 import SupabaseConfigBanner from '../../components/common/SupabaseConfigBanner';
 
 export default function LoginPage() {
@@ -19,7 +20,6 @@ export default function LoginPage() {
 
   const { login, isConfigured } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,7 +51,9 @@ export default function LoginPage() {
     if (!validate()) return;
 
     if (!isConfigured) {
-      setApiError('Supabase is not configured yet. Please configure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file to sign in.');
+      setApiError(
+        'Database connection is being initialized. Please make sure your Supabase keys are active.'
+      );
       return;
     }
 
@@ -72,38 +74,57 @@ export default function LoginPage() {
         navigate('/candidate/dashboard');
       }
     } catch (err) {
-      setApiError(err.message || 'Invalid email or password. Please verify your credentials.');
+      console.error('Login error:', err);
+      let errorMsg = err.message || 'Invalid email or password. Please verify your credentials.';
+      if (errorMsg.includes('Failed to fetch')) {
+        errorMsg = 'Network connection failed. Please check your internet or disable Vercel deployment protection.';
+      }
+      setApiError(errorMsg);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#FBF9FE] flex flex-col justify-between">
+    <div className="min-h-screen bg-[#FAF8FE] dark:bg-[#0B0813] text-slate-900 dark:text-white flex flex-col justify-between transition-colors duration-300">
       <SupabaseConfigBanner />
 
-      <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full">
+      {/* Top utility bar */}
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-6 flex items-center justify-between">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-purple-700 dark:hover:text-white transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span>Back to Home</span>
+        </Link>
+        <ThemeToggle size="sm" showLabel />
+      </div>
+
+      <div className="py-10 px-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full">
         {/* Header Logo */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-2.5 group mb-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white shadow-soft">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-pink-500 flex items-center justify-center text-white shadow-md">
               <Sparkles className="w-5 h-5" />
             </div>
-            <span className="text-2xl font-black tracking-tight text-purple-950">
+            <span className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">
               ReBloom
             </span>
           </Link>
-          <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">Welcome back</h1>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1">
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-950 dark:text-white tracking-tight">
+            Welcome back
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1.5 font-medium">
             Sign in to continue your career comeback
           </p>
         </div>
 
-        <Card className="p-6 sm:p-8 bg-white border-purple-100/90 shadow-soft-lg">
+        <Card className="p-6 sm:p-8 bg-white dark:bg-[#130E24] border border-purple-200/80 dark:border-purple-800/40 shadow-xl dark:shadow-none">
           {apiError && (
-            <div className="mb-5 p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-start gap-2.5">
-              <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-              <div className="leading-relaxed">{apiError}</div>
+            <div className="mb-5 p-4 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200 text-xs sm:text-sm flex items-start gap-2.5 font-medium leading-relaxed">
+              <AlertCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
+              <div>{apiError}</div>
             </div>
           )}
 
@@ -122,12 +143,12 @@ export default function LoginPage() {
 
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                  Password <span className="text-purple-600">*</span>
+                <label htmlFor="password" className="block text-sm font-semibold text-slate-800 dark:text-slate-200">
+                  Password <span className="text-purple-600 dark:text-purple-400">*</span>
                 </label>
                 <Link
                   to="/forgot-password"
-                  className="text-xs text-purple-700 hover:text-purple-900 font-medium"
+                  className="text-xs font-semibold text-purple-700 dark:text-purple-400 hover:text-purple-900 dark:hover:text-purple-300"
                 >
                   Forgot password?
                 </Link>
@@ -159,16 +180,19 @@ export default function LoginPage() {
             </div>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-purple-50 text-center text-xs text-gray-500">
+          <div className="mt-6 pt-6 border-t border-purple-100 dark:border-purple-900/40 text-center text-xs sm:text-sm text-slate-600 dark:text-slate-400">
             Don't have an account yet?{' '}
-            <Link to="/register" className="font-semibold text-purple-700 hover:text-purple-900 underline">
+            <Link
+              to="/register"
+              className="font-bold text-purple-700 dark:text-purple-400 hover:text-purple-900 dark:hover:text-purple-300 underline ml-1"
+            >
               Create an account
             </Link>
           </div>
         </Card>
       </div>
 
-      <div className="text-center py-6 text-xs text-gray-400">
+      <div className="text-center py-6 text-xs font-semibold text-slate-500 dark:text-slate-400">
         ReBloom Platform • Your career deserves another beginning
       </div>
     </div>

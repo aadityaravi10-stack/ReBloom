@@ -109,8 +109,8 @@ export default function CandidateDashboardPage() {
         {/* Feature Shortcuts Grid */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-base font-bold text-gray-900">Career Tools & Quick Shortcuts</h3>
-            <span className="text-xs text-purple-700 font-medium">Phase 1 & Future Modules</span>
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Career Tools & Quick Shortcuts</h3>
+            <span className="text-xs text-purple-700 dark:text-purple-400 font-bold">Phase 1 & Phase 2 Active</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

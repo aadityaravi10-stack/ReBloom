@@ -13,19 +13,19 @@ export default function StatCard({
     <Card className="p-5 relative overflow-hidden group">
       <div className="flex items-start justify-between">
         <div className="space-y-1">
-          <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">{title}</p>
-          <p className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">{value}</p>
-          {subtitle && <p className="text-xs text-gray-500 mt-0.5">{subtitle}</p>}
+          <p className="text-xs font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300">{title}</p>
+          <p className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">{value}</p>
+          {subtitle && <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mt-0.5">{subtitle}</p>}
         </div>
         {Icon && (
-          <div className="p-3 rounded-2xl bg-purple-50 text-purple-600 group-hover:scale-110 group-hover:bg-purple-100 transition-all">
+          <div className="p-3 rounded-2xl bg-purple-50 dark:bg-purple-900/40 text-purple-600 dark:text-purple-300 group-hover:scale-110 transition-all shadow-xs">
             <Icon className="w-5 h-5" />
           </div>
         )}
       </div>
       {badgeText && (
-        <div className="mt-3 pt-3 border-t border-purple-50">
-          <span className="text-[11px] font-medium text-purple-700 bg-purple-50 px-2 py-0.5 rounded-md">
+        <div className="mt-3 pt-3 border-t border-purple-100 dark:border-purple-900/40">
+          <span className="text-[11px] font-bold text-purple-700 dark:text-purple-300 bg-purple-100/70 dark:bg-purple-950/70 border border-purple-200 dark:border-purple-800 px-2.5 py-0.5 rounded-md">
             {badgeText}
           </span>
         </div>

@@ -25,23 +25,23 @@ export default function FeatureShortcutCard({
     <Card hoverEffect className="p-5 flex flex-col justify-between h-full group">
       <div>
         <div className="flex items-start justify-between mb-3">
-          <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-colors">
+          <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/60 text-purple-700 dark:text-purple-300 flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-colors">
             <Icon className="w-5 h-5" />
           </div>
-          <span className="text-[10px] font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full border border-purple-100">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-purple-800 dark:text-purple-300 bg-purple-100/70 dark:bg-purple-950/70 px-2.5 py-0.5 rounded-full border border-purple-200 dark:border-purple-800">
             {badge}
           </span>
         </div>
-        <h4 className="font-bold text-sm text-gray-900 group-hover:text-purple-700 transition-colors">
+        <h4 className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
           {title}
         </h4>
-        <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+        <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed font-normal">
           {description}
         </p>
       </div>
 
-      <div className="pt-4 mt-2 border-t border-purple-50/60 flex items-center justify-between text-xs font-semibold text-purple-700">
-        <span>Explore Module</span>
+      <div className="pt-4 mt-3 border-t border-purple-100 dark:border-purple-900/40 flex items-center justify-between text-xs font-bold text-purple-700 dark:text-purple-400">
+        <span>Launch Module</span>
         <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
       </div>
     </Card>

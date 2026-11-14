@@ -188,8 +188,8 @@ export default function CandidateProfileForm({ onSuccess }) {
       )}
 
       {/* Section 1: Basic Identity */}
-      <div className="bg-white p-6 rounded-3xl border border-purple-100 shadow-soft space-y-4">
-        <h3 className="text-base font-bold text-gray-900 border-b border-purple-50 pb-3 flex items-center gap-2">
+      <div className="bg-white dark:bg-[#130E24] p-6 rounded-3xl border border-purple-100 dark:border-purple-800/40 shadow-soft dark:shadow-none space-y-4">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white border-b border-purple-50 dark:border-purple-900/40 pb-3 flex items-center gap-2">
           <span className="w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-xs flex items-center justify-center font-bold">1</span>
           Personal & Contact Details
         </h3>
@@ -236,8 +236,8 @@ export default function CandidateProfileForm({ onSuccess }) {
       </div>
 
       {/* Section 2: Education & Career Background */}
-      <div className="bg-white p-6 rounded-3xl border border-purple-100 shadow-soft space-y-4">
-        <h3 className="text-base font-bold text-gray-900 border-b border-purple-50 pb-3 flex items-center gap-2">
+      <div className="bg-white dark:bg-[#130E24] p-6 rounded-3xl border border-purple-100 dark:border-purple-800/40 shadow-soft dark:shadow-none space-y-4">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white border-b border-purple-50 dark:border-purple-900/40 pb-3 flex items-center gap-2">
           <span className="w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-xs flex items-center justify-center font-bold">2</span>
           Professional History & Career Gap Details
         </h3>
@@ -320,8 +320,8 @@ export default function CandidateProfileForm({ onSuccess }) {
       </div>
 
       {/* Section 3: Existing Skills & Interests */}
-      <div className="bg-white p-6 rounded-3xl border border-purple-100 shadow-soft space-y-4">
-        <h3 className="text-base font-bold text-gray-900 border-b border-purple-50 pb-3 flex items-center gap-2">
+      <div className="bg-white dark:bg-[#130E24] p-6 rounded-3xl border border-purple-100 dark:border-purple-800/40 shadow-soft dark:shadow-none space-y-4">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white border-b border-purple-50 dark:border-purple-900/40 pb-3 flex items-center gap-2">
           <span className="w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-xs flex items-center justify-center font-bold">3</span>
           Skills & Career Interests
         </h3>
@@ -439,8 +439,8 @@ export default function CandidateProfileForm({ onSuccess }) {
       </div>
 
       {/* Section 4: Work Flexibility Preferences */}
-      <div className="bg-white p-6 rounded-3xl border border-purple-100 shadow-soft space-y-4">
-        <h3 className="text-base font-bold text-gray-900 border-b border-purple-50 pb-3 flex items-center gap-2">
+      <div className="bg-white dark:bg-[#130E24] p-6 rounded-3xl border border-purple-100 dark:border-purple-800/40 shadow-soft dark:shadow-none space-y-4">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white border-b border-purple-50 dark:border-purple-900/40 pb-3 flex items-center gap-2">
           <span className="w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-xs flex items-center justify-center font-bold">4</span>
           Work Flexibility Preferences
         </h3>

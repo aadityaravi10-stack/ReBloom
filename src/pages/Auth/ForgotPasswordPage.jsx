@@ -5,6 +5,7 @@ import { useAuth } from '../../hooks/useAuth';
 import Input from '../../components/common/Input';
 import Button from '../../components/common/Button';
 import Card from '../../components/common/Card';
+import ThemeToggle from '../../components/common/ThemeToggle';
 import SupabaseConfigBanner from '../../components/common/SupabaseConfigBanner';
 
 export default function ForgotPasswordPage() {
@@ -23,7 +24,7 @@ export default function ForgotPasswordPage() {
     }
 
     if (!isConfigured) {
-      setError('Supabase is not configured. Please set your credentials in .env.');
+      setError('Database is not initialized. Please configure credentials.');
       return;
     }
 
@@ -41,34 +42,47 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBF9FE] flex flex-col justify-between">
+    <div className="min-h-screen bg-[#FAF8FE] dark:bg-[#0B0813] text-slate-900 dark:text-white flex flex-col justify-between transition-colors duration-300">
       <SupabaseConfigBanner />
 
-      <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-6 flex items-center justify-between">
+        <Link
+          to="/login"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-purple-700 dark:hover:text-white transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span>Back to Sign In</span>
+        </Link>
+        <ThemeToggle size="sm" showLabel />
+      </div>
+
+      <div className="py-10 px-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full">
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-2.5 group mb-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white shadow-soft">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-pink-500 flex items-center justify-center text-white shadow-md">
               <Sparkles className="w-5 h-5" />
             </div>
-            <span className="text-2xl font-black tracking-tight text-purple-950">
+            <span className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">
               ReBloom
             </span>
           </Link>
-          <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">Reset Password</h1>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1">
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-950 dark:text-white tracking-tight">
+            Reset Password
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1.5 font-medium">
             Enter your registered email to receive recovery instructions
           </p>
         </div>
 
-        <Card className="p-6 sm:p-8 bg-white border-purple-100/90 shadow-soft-lg">
+        <Card className="p-6 sm:p-8 bg-white dark:bg-[#130E24] border border-purple-200/80 dark:border-purple-800/40 shadow-xl dark:shadow-none">
           {success ? (
             <div className="space-y-4 text-center">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-300 flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <h3 className="font-bold text-gray-900 text-base">Check your inbox</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                If an account exists with <span className="font-semibold text-purple-900">{email}</span>, we have sent password reset instructions to that email.
+              <h3 className="font-bold text-slate-900 dark:text-white text-base">Check your inbox</h3>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                If an account exists with <span className="font-bold text-purple-700 dark:text-purple-300">{email}</span>, instructions have been sent.
               </p>
               <div className="pt-2">
                 <Link to="/login">
@@ -81,8 +95,8 @@ export default function ForgotPasswordPage() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               {error && (
-                <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-start gap-2.5">
-                  <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+                <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200 text-xs sm:text-sm flex items-start gap-2.5 font-medium leading-relaxed">
+                  <AlertCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
                   <div>{error}</div>
                 </div>
               )}
@@ -116,7 +130,7 @@ export default function ForgotPasswordPage() {
               <div className="text-center pt-4">
                 <Link
                   to="/login"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-700 hover:text-purple-900"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 dark:text-purple-400 hover:text-purple-900 dark:hover:text-purple-300"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>Back to Sign In</span>
@@ -127,7 +141,7 @@ export default function ForgotPasswordPage() {
         </Card>
       </div>
 
-      <div className="text-center py-6 text-xs text-gray-400">
+      <div className="text-center py-6 text-xs font-semibold text-slate-500 dark:text-slate-400">
         ReBloom Platform • Your career deserves another beginning
       </div>
     </div>

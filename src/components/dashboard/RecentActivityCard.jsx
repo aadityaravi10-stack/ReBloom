@@ -35,8 +35,8 @@ export default function RecentActivityCard({ profile, candidateProfile }) {
   return (
     <Card className="p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-base font-bold text-gray-900">Recent Activity</h3>
-        <span className="text-xs text-gray-400 flex items-center gap-1">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white">Recent Activity</h3>
+        <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 font-medium">
           <Clock className="w-3.5 h-3.5" /> Real-time log
         </span>
       </div>
@@ -46,15 +46,15 @@ export default function RecentActivityCard({ profile, candidateProfile }) {
           const Icon = act.icon;
           return (
             <div key={act.id} className="flex items-start gap-3 text-xs">
-              <div className="w-7 h-7 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 mt-0.5">
-                <Icon className="w-3.5 h-3.5" />
+              <div className="w-8 h-8 rounded-xl bg-purple-50 dark:bg-purple-900/50 text-purple-600 dark:text-purple-300 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                <Icon className="w-4 h-4" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between">
-                  <p className="font-bold text-gray-900 truncate">{act.title}</p>
-                  <span className="text-[10px] text-gray-400 shrink-0">{act.timestamp}</span>
+                  <p className="font-bold text-slate-900 dark:text-white truncate">{act.title}</p>
+                  <span className="text-[10px] font-semibold text-purple-700 dark:text-purple-400 shrink-0">{act.timestamp}</span>
                 </div>
-                <p className="text-gray-500 mt-0.5 truncate">{act.desc}</p>
+                <p className="text-slate-600 dark:text-slate-300 mt-0.5 truncate font-medium">{act.desc}</p>
               </div>
             </div>
           );

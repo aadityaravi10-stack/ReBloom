@@ -1,114 +1,106 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, CheckCircle2, ShieldCheck, HeartHandshake, Star } from 'lucide-react';
-import Button from '../../../components/common/Button';
+import { ArrowRight, Play, Sparkles, Users, Award, TrendingUp } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
-      {/* Background soft ambient orbs */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] pointer-events-none overflow-hidden -z-10">
-        <div className="absolute top-[-100px] left-1/4 w-96 h-96 bg-purple-200/40 rounded-full blur-3xl" />
-        <div className="absolute top-10 right-1/4 w-96 h-96 bg-pink-200/30 rounded-full blur-3xl" />
-        <div className="absolute top-40 left-1/2 -translate-x-1/2 w-80 h-80 bg-orange-100/40 rounded-full blur-3xl" />
-      </div>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-[#F5EFFF] via-[#FAF8FE] to-[#FAF8FE] dark:from-[#0B0813] dark:via-[#0F0B1C] dark:to-[#0B0813] transition-colors duration-300">
+      {/* Animated mesh gradient background */}
+      <div
+        className="absolute inset-0 animate-mesh opacity-70 dark:opacity-90"
+        style={{
+          background:
+            'linear-gradient(-45deg, rgba(147, 51, 234, 0.15), rgba(236, 72, 153, 0.1), rgba(126, 34, 206, 0.18), rgba(244, 114, 182, 0.12))',
+          backgroundSize: '400% 400%',
+        }}
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Heading and CTAs */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100/80 border border-purple-200/80 text-purple-900 text-xs sm:text-sm font-semibold shadow-xs">
-              <Sparkles className="w-4 h-4 text-purple-600 animate-spin" style={{ animationDuration: '6s' }} />
-              <span>Empowering 50,000+ Women Returning to Work</span>
-            </div>
+      {/* Radial accent glows */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-500/15 dark:bg-purple-600/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-pink-500/15 dark:bg-pink-600/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-fuchsia-500/10 dark:bg-fuchsia-500/12 rounded-full blur-[90px] pointer-events-none" />
 
-            {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-950 tracking-tight leading-[1.12]">
-              Your Career Deserves <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-purple-700 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Another Beginning.
-              </span>
-            </h1>
+      {/* Grid pattern overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.035] dark:opacity-[0.06]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(126, 34, 206, .2) 1px, transparent 1px), linear-gradient(90deg, rgba(126, 34, 206, .2) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+        }}
+      />
 
-            {/* Supporting Text */}
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              A career break doesn't define your potential. Rediscover your skills, rebuild your confidence and find opportunities designed around your life.
-            </p>
+      {/* Subtle grain texture */}
+      <div className="grain absolute inset-0 opacity-40 dark:opacity-100" />
 
-            {/* Buttons */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <Link to="/register" className="w-full sm:w-auto">
-                <Button variant="accent" size="lg" className="w-full sm:w-auto text-base px-8 py-4 shadow-lg shadow-purple-500/25" icon={ArrowRight} iconPosition="right">
-                  Restart Your Career
-                </Button>
-              </Link>
-              <a href="#features" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto text-base px-7 py-4">
-                  Explore Opportunities
-                </Button>
-              </a>
-            </div>
-
-            {/* Micro Trust Stats */}
-            <div className="pt-6 border-t border-purple-100/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-gray-600">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Zero gap stigma</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-purple-600 shrink-0" />
-                <span>Verified Returnships</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <HeartHandshake className="w-4 h-4 text-pink-500 shrink-0" />
-                <span>Mentorship & Flexibility</span>
-              </div>
-            </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
+        <div className="text-center max-w-4xl mx-auto">
+          {/* Top badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-purple-950/70 border border-purple-200 dark:border-purple-700/50 text-purple-900 dark:text-purple-200 text-xs sm:text-sm font-semibold mb-8 shadow-sm backdrop-blur-md animate-float">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
+            <span>Trusted by 50,000+ women returning to successful careers</span>
           </div>
 
-          {/* Right Column: Hero Visual Graphic */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              {/* Outer decorative ring */}
-              <div className="absolute -inset-3 bg-gradient-to-tr from-purple-500/20 via-pink-400/20 to-orange-300/20 rounded-[2.5rem] blur-xl opacity-70" />
+          {/* Main heading — oversized, bold, high contrast */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.02] sm:leading-[0.95] tracking-tight mb-8">
+            <span className="block text-slate-950 dark:text-white">Your career</span>
+            <span className="block text-gradient mt-1 sm:mt-2">deserves another</span>
+            <span className="block text-slate-950 dark:text-white mt-1 sm:mt-2">beginning.</span>
+          </h1>
 
-              {/* Main Photo Card */}
-              <div className="relative rounded-3xl overflow-hidden border border-purple-100 shadow-2xl bg-white">
-                <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
-                  alt="Confident smiling professional woman returning to tech career"
-                  className="w-full h-[420px] object-cover object-top hover:scale-102 transition-transform duration-500"
-                />
+          {/* Subtitle — high contrast, easy to read */}
+          <p className="text-base sm:text-xl text-slate-700 dark:text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal mb-10">
+            A career break is not a penalty. Rediscover your leadership, bridge modern skills with AI coaching, and step into verified returnships built for real life.
+          </p>
 
-                {/* Floating badge 1: Comeback story highlight */}
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-xl border border-purple-100/90 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white font-bold text-sm">
-                      4y
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-gray-900 leading-tight">Career Gap: 4 Years</p>
-                      <p className="text-[11px] text-purple-700 font-medium">Re-entered as Lead Product Designer</p>
-                    </div>
-                  </div>
-                  <div className="flex text-amber-400 text-xs">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-                </div>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <Link to="/register">
+              <button className="group flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 via-purple-700 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 text-base font-bold shadow-xl shadow-purple-600/25 hover:shadow-purple-600/40 transition-all hover:-translate-y-0.5 cursor-pointer">
+                <Sparkles className="w-5 h-5 text-amber-300 dark:text-purple-600" />
+                <span>Restart Your Career</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
+            <a href="#how-it-works">
+              <button className="flex items-center gap-2 px-7 py-4 rounded-full bg-white/90 dark:bg-purple-950/50 hover:bg-white dark:hover:bg-purple-900/60 border border-purple-200 dark:border-purple-700/60 text-slate-800 dark:text-purple-100 text-base font-semibold transition-all backdrop-blur-md shadow-sm cursor-pointer">
+                <Play className="w-4 h-4 text-purple-600 dark:text-purple-300 fill-purple-600/20" />
+                <span>See How It Works</span>
+              </button>
+            </a>
+          </div>
 
-                {/* Floating Badge 2: Top Right */}
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-md border border-purple-100 text-xs font-semibold text-purple-900 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                  <span>100% Comeback Friendly</span>
-                </div>
+          {/* Floating glass stat cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <div className="bg-white/90 dark:bg-[#130E24]/90 border border-purple-100 dark:border-purple-800/40 rounded-2xl p-5 text-center shadow-sm dark:shadow-glow/10 backdrop-blur-md animate-float">
+              <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/40 text-purple-600 dark:text-purple-300 flex items-center justify-center mx-auto mb-2">
+                <Users className="w-5 h-5" />
               </div>
+              <p className="text-3xl font-black text-slate-950 dark:text-white">50,000+</p>
+              <p className="text-xs sm:text-sm font-semibold text-purple-900 dark:text-purple-200 mt-0.5">Women Returners</p>
+            </div>
+
+            <div className="bg-white/90 dark:bg-[#130E24]/90 border border-purple-100 dark:border-purple-800/40 rounded-2xl p-5 text-center shadow-sm dark:shadow-glow/10 backdrop-blur-md animate-float-delayed">
+              <div className="w-10 h-10 rounded-xl bg-pink-50 dark:bg-pink-900/40 text-pink-600 dark:text-pink-300 flex items-center justify-center mx-auto mb-2">
+                <Award className="w-5 h-5" />
+              </div>
+              <p className="text-3xl font-black text-slate-950 dark:text-white">89%</p>
+              <p className="text-xs sm:text-sm font-semibold text-pink-900 dark:text-pink-200 mt-0.5">Retention Rate</p>
+            </div>
+
+            <div className="bg-white/90 dark:bg-[#130E24]/90 border border-purple-100 dark:border-purple-800/40 rounded-2xl p-5 text-center shadow-sm dark:shadow-glow/10 backdrop-blur-md animate-float-slow">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-300 flex items-center justify-center mx-auto mb-2">
+                <TrendingUp className="w-5 h-5" />
+              </div>
+              <p className="text-3xl font-black text-slate-950 dark:text-white">2.4x</p>
+              <p className="text-xs sm:text-sm font-semibold text-amber-900 dark:text-amber-200 mt-0.5">Faster Comeback</p>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#FAF8FE] dark:from-[#0B0813] to-transparent pointer-events-none" />
     </section>
   );
 }

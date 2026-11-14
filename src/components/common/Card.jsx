@@ -11,12 +11,12 @@ export default function Card({
   return (
     <div
       onClick={onClick}
-      className={`bg-white rounded-2xl ${
-        bordered ? 'border border-purple-100/70' : ''
+      className={`bg-white dark:bg-[#130E24] text-slate-900 dark:text-slate-100 rounded-2xl transition-all duration-200 ${
+        bordered ? 'border border-purple-100/80 dark:border-purple-800/40' : ''
       } ${
         hoverEffect
-          ? 'transition-all duration-200 hover:-translate-y-1 hover:shadow-soft-lg hover:border-purple-200 cursor-pointer'
-          : 'shadow-soft'
+          ? 'hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-glow/15 hover:border-purple-300 dark:hover:border-purple-700/60 cursor-pointer'
+          : 'shadow-soft dark:shadow-none'
       } ${className}`}
       {...props}
     >

@@ -1,130 +1,120 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Heart, Linkedin, Twitter, Instagram, Mail, MapPin, Globe } from 'lucide-react';
+import { Sparkles, Heart, Linkedin, Twitter, Instagram } from 'lucide-react';
+import ThemeToggle from '../common/ThemeToggle';
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-purple-100 text-gray-600 text-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <footer className="bg-white dark:bg-[#0B0813] border-t border-purple-100 dark:border-purple-900/40 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          {/* Brand Info */}
+          {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white shadow-soft">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-pink-500 flex items-center justify-center text-white shadow-sm">
                 <Sparkles className="w-4 h-4" />
               </div>
-              <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-purple-900 to-purple-700 bg-clip-text text-transparent">
-                ReBloom
-              </span>
+              <span className="text-xl font-black text-slate-900 dark:text-white">ReBloom</span>
             </Link>
-            <p className="text-sm text-gray-600 max-w-sm leading-relaxed">
-              Empowering women to return to professional life with confidence, renewed skills, and opportunities designed around real lives.
+
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-sm leading-relaxed">
+              Empowering women to return to high-impact professional careers with AI-powered gap reframing, modern skill refreshers, and verified returnships.
             </p>
-            <p className="text-xs font-semibold text-purple-700 uppercase tracking-wider">
-              Your career deserves another beginning.
-            </p>
+
             <div className="flex items-center gap-3 pt-2">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-9 h-9 rounded-full bg-purple-50 hover:bg-purple-100 text-purple-700 flex items-center justify-center transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-9 h-9 rounded-full bg-purple-50 hover:bg-purple-100 text-purple-700 flex items-center justify-center transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-9 h-9 rounded-full bg-purple-50 hover:bg-purple-100 text-purple-700 flex items-center justify-center transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
+              {[Linkedin, Twitter, Instagram].map((Icon, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  aria-label="Social link"
+                  className="w-9 h-9 rounded-xl bg-purple-50 dark:bg-purple-950/60 border border-purple-200/80 dark:border-purple-800/40 text-purple-700 dark:text-purple-300 hover:bg-purple-600 hover:text-white dark:hover:bg-purple-600 dark:hover:text-white flex items-center justify-center transition-all"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
+              <div className="ml-2">
+                <ThemeToggle size="sm" />
+              </div>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Platform Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-gray-900 mb-4">Platform</h4>
-            <ul className="space-y-2.5">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300 mb-4">
+              Platform
+            </h4>
+            <ul className="space-y-2.5 text-sm font-medium text-slate-600 dark:text-slate-300">
               <li>
-                <a href="/#about" className="hover:text-purple-700 transition-colors">About ReBloom</a>
+                <a href="/#about" className="hover:text-purple-700 dark:hover:text-white transition-colors">
+                  About the Mission
+                </a>
               </li>
               <li>
-                <a href="/#how-it-works" className="hover:text-purple-700 transition-colors">How It Works</a>
+                <a href="/#how-it-works" className="hover:text-purple-700 dark:hover:text-white transition-colors">
+                  How It Works
+                </a>
               </li>
               <li>
-                <a href="/#features" className="hover:text-purple-700 transition-colors">Features Preview</a>
+                <a href="/#features" className="hover:text-purple-700 dark:hover:text-white transition-colors">
+                  AI Career Tools
+                </a>
               </li>
               <li>
-                <a href="/#stories" className="hover:text-purple-700 transition-colors">Success Stories</a>
-              </li>
-              <li>
-                <Link to="/register" className="text-purple-600 font-medium hover:text-purple-800 transition-colors">Join as Candidate</Link>
+                <a href="/#stories" className="hover:text-purple-700 dark:hover:text-white transition-colors">
+                  Success Stories
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Employers */}
+          {/* Employer Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-gray-900 mb-4">Employers</h4>
-            <ul className="space-y-2.5">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300 mb-4">
+              For Employers
+            </h4>
+            <ul className="space-y-2.5 text-sm font-medium text-slate-600 dark:text-slate-300">
               <li>
-                <Link to="/register" className="hover:text-purple-700 transition-colors">Hire Returners</Link>
+                <Link to="/register?role=employer" className="hover:text-purple-700 dark:hover:text-white transition-colors">
+                  Hire Returners
+                </Link>
               </li>
               <li>
-                <a href="/#features" className="hover:text-purple-700 transition-colors">Returnship Programs</a>
+                <a href="/#features" className="hover:text-purple-700 dark:hover:text-white transition-colors">
+                  Returnship Portal
+                </a>
               </li>
               <li>
-                <a href="/#features" className="hover:text-purple-700 transition-colors">Diversity & Inclusion</a>
-              </li>
-              <li>
-                <Link to="/login" className="hover:text-purple-700 transition-colors">Employer Login</Link>
+                <Link to="/login" className="hover:text-purple-700 dark:hover:text-white transition-colors">
+                  Employer Login
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact & Legal */}
+          {/* Legal / Contact */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-gray-900 mb-4">Support & Legal</h4>
-            <ul className="space-y-2.5 text-xs">
-              <li className="flex items-center gap-2 text-gray-500">
-                <Mail className="w-3.5 h-3.5 text-purple-500" />
-                <span>support@rebloomcareers.com</span>
-              </li>
-              <li className="flex items-center gap-2 text-gray-500">
-                <MapPin className="w-3.5 h-3.5 text-purple-500" />
-                <span>Global Remote & Tech Hubs</span>
-              </li>
-              <li className="pt-2">
-                <a href="#privacy" onClick={(e) => { e.preventDefault(); alert("ReBloom Privacy Policy: All user profile data is strictly protected under Supabase Row Level Security."); }} className="hover:text-purple-700 transition-colors">Privacy Policy</a>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300 mb-4">
+              Support & Ethics
+            </h4>
+            <ul className="space-y-2.5 text-sm font-medium text-slate-600 dark:text-slate-300">
+              <li>
+                <span className="text-slate-500 dark:text-slate-400">Zero Gap Discrimination</span>
               </li>
               <li>
-                <a href="#terms" onClick={(e) => { e.preventDefault(); alert("ReBloom Terms: Built with respect for inclusive hiring and affirmative equal opportunity."); }} className="hover:text-purple-700 transition-colors">Terms & Conditions</a>
+                <span className="text-slate-500 dark:text-slate-400">Strict Data Privacy</span>
+              </li>
+              <li>
+                <span className="font-semibold text-purple-700 dark:text-purple-300">support@rebloom.io</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-purple-50 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
-          <p>© {new Date().getFullYear()} ReBloom Technologies. Built with passion for women's career comeback.</p>
-          <div className="flex items-center gap-1 text-purple-800">
-            <span>Built with</span>
-            <Heart className="w-3.5 h-3.5 text-pink-500 fill-pink-500" />
-            <span>for inclusive workplaces</span>
-          </div>
+        <div className="border-t border-purple-100 dark:border-purple-900/40 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-slate-500 dark:text-slate-400">
+          <p>&copy; {new Date().getFullYear()} ReBloom Technologies. All rights reserved.</p>
+          <p className="flex items-center gap-1.5">
+            Crafted with <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> for inclusive return-to-work culture
+          </p>
         </div>
       </div>
     </footer>

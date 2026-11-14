@@ -38,12 +38,12 @@ export default function CareerJourneyTimeline({ currentStep = 1 }) {
     <Card className="p-6">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-base font-bold text-gray-900">Your Comeback Roadmap</h3>
-          <p className="text-xs text-gray-500 mt-0.5">
+          <h3 className="text-base font-bold text-slate-900 dark:text-white">Your Comeback Roadmap</h3>
+          <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mt-0.5">
             A guided 4-step pathway from career break to professional restart
           </p>
         </div>
-        <span className="text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-200">
+        <span className="text-xs font-bold text-purple-700 dark:text-purple-300 bg-purple-100/80 dark:bg-purple-950/80 px-3 py-1 rounded-full border border-purple-200 dark:border-purple-800">
           Step {currentStep} of 4
         </span>
       </div>
@@ -58,38 +58,38 @@ export default function CareerJourneyTimeline({ currentStep = 1 }) {
               key={item.step}
               className={`p-4 rounded-2xl border transition-all ${
                 isCurrent
-                  ? 'bg-purple-50/70 border-purple-300 shadow-xs ring-1 ring-purple-300'
+                  ? 'bg-purple-50/80 dark:bg-purple-950/60 border-purple-400 dark:border-purple-700 ring-2 ring-purple-400/40'
                   : isDone
-                  ? 'bg-white border-emerald-200'
-                  : 'bg-gray-50/50 border-gray-200/80 opacity-70'
+                  ? 'bg-emerald-50/50 dark:bg-emerald-950/30 border-emerald-300 dark:border-emerald-800'
+                  : 'bg-purple-50/30 dark:bg-[#18132C]/60 border-purple-100 dark:border-purple-900/40 opacity-70'
               }`}
             >
               <div className="flex items-center justify-between mb-3">
                 <span
                   className={`w-7 h-7 rounded-xl flex items-center justify-center text-xs font-bold ${
                     isCurrent
-                      ? 'bg-purple-600 text-white shadow-soft'
+                      ? 'bg-purple-600 text-white shadow-sm'
                       : isDone
                       ? 'bg-emerald-600 text-white'
-                      : 'bg-gray-200 text-gray-600'
+                      : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
                   }`}
                 >
                   {isDone ? '✓' : item.step}
                 </span>
                 <span
-                  className={`text-[10px] font-semibold uppercase tracking-wider ${
+                  className={`text-[10px] font-bold uppercase tracking-wider ${
                     isCurrent
-                      ? 'text-purple-700'
+                      ? 'text-purple-700 dark:text-purple-300'
                       : isDone
-                      ? 'text-emerald-700'
-                      : 'text-gray-400'
+                      ? 'text-emerald-700 dark:text-emerald-400'
+                      : 'text-slate-500 dark:text-slate-400'
                   }`}
                 >
                   {isCurrent ? 'In Progress' : isDone ? 'Completed' : 'Upcoming'}
                 </span>
               </div>
-              <h4 className="text-xs font-bold text-gray-900 leading-snug">{item.title}</h4>
-              <p className="text-[11px] text-gray-500 mt-1 leading-relaxed">{item.description}</p>
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white leading-snug">{item.title}</h4>
+              <p className="text-[11px] font-medium text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">{item.description}</p>
             </div>
           );
         })}
