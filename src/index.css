@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#FBF9FE] text-[#1E1B2E] font-sans;
+  }
+}
+
+/* Custom scrollbars and styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d8b4fe;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a855f7;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Soft gradients */
+.gradient-rebloom {
+  background: linear-gradient(135deg, #7F4BE5 0%, #A855F7 50%, #EC4899 100%);
+}
+
+.gradient-soft {
+  background: linear-gradient(180deg, #F9F5FF 0%, #FFFFFF 100%);
+}
+
+.gradient-subtle {
+  background: linear-gradient(135deg, #FAF5FF 0%, #FFF7ED 100%);
+}
