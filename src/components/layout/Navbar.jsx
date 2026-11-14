@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Sparkles, Menu, X, LogOut, LayoutDashboard, ArrowRight } from 'lucide-react';
+import { Menu, X, LogOut, LayoutDashboard, ArrowRight } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
+import ReBloomLogo from '../common/ReBloomLogo';
 import ThemeToggle from '../common/ThemeToggle';
 import Button from '../common/Button';
 
@@ -55,12 +56,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5 group z-10">
-            <div className="relative">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-pink-500 flex items-center justify-center text-white shadow-md group-hover:shadow-purple-500/40 transition-shadow">
-                <Sparkles className="w-4 h-4" />
-              </div>
-              <div className="absolute -inset-1 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 opacity-0 group-hover:opacity-30 blur transition-opacity" />
-            </div>
+            <ReBloomLogo size="md" />
             <span className="text-xl font-black tracking-tight text-slate-900 dark:text-white transition-colors">
               ReBloom
             </span>

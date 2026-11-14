@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Heart, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Heart, Linkedin, Twitter, Instagram } from 'lucide-react';
+import ReBloomLogo from '../common/ReBloomLogo';
 import ThemeToggle from '../common/ThemeToggle';
 
 export default function Footer() {
@@ -11,9 +12,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-pink-500 flex items-center justify-center text-white shadow-sm">
-                <Sparkles className="w-4 h-4" />
-              </div>
+              <ReBloomLogo size="md" />
               <span className="text-xl font-black text-slate-900 dark:text-white">ReBloom</span>
             </Link>
 

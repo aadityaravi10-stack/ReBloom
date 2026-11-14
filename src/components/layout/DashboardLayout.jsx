@@ -14,6 +14,7 @@ import {
   Sparkle,
 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
+import ReBloomLogo from '../common/ReBloomLogo';
 import ThemeToggle from '../common/ThemeToggle';
 import SupabaseConfigBanner from '../common/SupabaseConfigBanner';
 
@@ -59,9 +60,7 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
               <Menu className="w-5 h-5" />
             </button>
             <Link to="/" className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-pink-500 flex items-center justify-center text-white shadow-sm">
-                <Sparkles className="w-4 h-4" />
-              </div>
+              <ReBloomLogo size="sm" />
               <span className="font-extrabold text-lg text-slate-900 dark:text-white tracking-tight">
                 ReBloom
               </span>

@@ -5,6 +5,7 @@ import { useAuth } from '../../hooks/useAuth';
 import Input from '../../components/common/Input';
 import Button from '../../components/common/Button';
 import Card from '../../components/common/Card';
+import ReBloomLogo from '../../components/common/ReBloomLogo';
 import ThemeToggle from '../../components/common/ThemeToggle';
 import SupabaseConfigBanner from '../../components/common/SupabaseConfigBanner';
 
@@ -151,11 +152,9 @@ export default function RegisterPage() {
       <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-lg mx-auto w-full">
         {/* Header Logo */}
         <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center gap-2.5 group mb-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-pink-500 flex items-center justify-center text-white shadow-md">
-              <Sparkles className="w-5 h-5" />
-            </div>
-            <span className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">
+          <Link to="/" className="inline-flex items-center gap-3 group mb-3">
+            <ReBloomLogo size="lg" />
+            <span className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white">
               ReBloom
             </span>
           </Link>

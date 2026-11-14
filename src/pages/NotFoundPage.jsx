@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Home } from 'lucide-react';
+import { Home } from 'lucide-react';
+import ReBloomLogo from '../components/common/ReBloomLogo';
 import Button from '../components/common/Button';
 
 export default function NotFoundPage() {
   return (
     <div className="min-h-screen bg-[#FAF8FE] dark:bg-[#0B0813] text-slate-900 dark:text-white flex flex-col items-center justify-center p-6 text-center transition-colors duration-300">
-      <div className="w-16 h-16 rounded-3xl bg-purple-100 dark:bg-purple-900/60 text-purple-700 dark:text-purple-300 flex items-center justify-center mb-6 shadow-md">
-        <Sparkles className="w-8 h-8" />
+      <div className="mb-6">
+        <ReBloomLogo size="xl" />
       </div>
 
       <h1 className="text-5xl sm:text-6xl font-black text-slate-950 dark:text-white tracking-tight">404</h1>
