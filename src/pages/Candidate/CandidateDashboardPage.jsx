@@ -110,7 +110,10 @@ export default function CandidateDashboardPage() {
         <div>
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Career Tools & Quick Shortcuts</h3>
-            <span className="text-xs text-purple-700 dark:text-purple-400 font-bold">Phase 1 & Phase 2 Active</span>
+            <span className="text-xs text-emerald-700 dark:text-emerald-400 font-bold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Verified Tools Active
+            </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -125,13 +128,13 @@ export default function CandidateDashboardPage() {
               title="Returnship Explorer"
               description="Browse companies offering paid 3-6 month return-to-work programs."
               iconName="Briefcase"
-              badge="Phase 3"
+              badge="Coming Soon"
             />
             <FeatureShortcutCard
               title="Skill Refresher Lab"
               description="Catch up on the latest tools, frameworks, and workflows."
               iconName="GraduationCap"
-              badge="Phase 3"
+              badge="Coming Soon"
             />
           </div>
         </div>

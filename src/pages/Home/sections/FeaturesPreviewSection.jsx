@@ -8,7 +8,7 @@ const features = [
   {
     id: 'resume',
     title: 'AI Career Studio & Gap Reframer',
-    tag: 'Live in Phase 2',
+    tag: 'Live & Active',
     isLive: true,
     icon: 'Sparkles',
     desc: 'Input break years and experience. Our AI transforms gaps into quantifiable leadership bullets and exports ATS-optimized resumes.',
@@ -19,7 +19,7 @@ const features = [
   {
     id: 'jobs',
     title: 'Smart Returnship Matching',
-    tag: 'Phase 3',
+    tag: 'Coming Soon',
     isLive: false,
     icon: 'Briefcase',
     desc: 'Algorithms optimized for career-relaunch talent. Filter by hybrid, remote, and flexible core hours.',
@@ -29,7 +29,7 @@ const features = [
   {
     id: 'skills',
     title: 'Targeted Micro-Skilling',
-    tag: 'Phase 3',
+    tag: 'Coming Soon',
     isLive: false,
     icon: 'GraduationCap',
     desc: 'Bite-sized refreshers on modern workflows, AI productivity tools, and collaborative cloud toolsets.',
@@ -39,7 +39,7 @@ const features = [
   {
     id: 'guidance',
     title: 'Returner Mentorship Circle',
-    tag: 'Phase 4',
+    tag: 'Coming Soon',
     isLive: false,
     icon: 'Compass',
     desc: '1-on-1 pairing with women leaders who successfully navigated the return journey and climbed back up.',
@@ -49,7 +49,7 @@ const features = [
   {
     id: 'interviews',
     title: 'STAR AI Mock Interviewer',
-    tag: 'Phase 4',
+    tag: 'Coming Soon',
     isLive: false,
     icon: 'FileText',
     desc: 'Interactive audio-visual AI interview sessions to master career-pause questions with poise and confidence.',
@@ -59,7 +59,7 @@ const features = [
   {
     id: 'returnships',
     title: 'Verified Employer Portal',
-    tag: 'Phase 3',
+    tag: 'Coming Soon',
     isLive: false,
     icon: 'Repeat',
     desc: 'Direct pipeline for progressive enterprises seeking seasoned, motivated returner talent without agency fees.',

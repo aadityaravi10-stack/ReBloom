@@ -20,11 +20,11 @@ export default function NextStepsCard({ role = 'candidate', profileComplete = fa
       btnText: 'Open Studio',
     },
     {
-      title: 'Join ReBloom Community & Mentorship (Phase 4)',
+      title: 'Join ReBloom Community & Mentorship (Coming Soon)',
       description: 'Connect with women leaders who successfully navigated career re-entries.',
       link: '#',
       status: 'upcoming',
-      btnText: 'Preview Roadmap',
+      btnText: 'Coming Soon',
     },
   ];
 
@@ -67,7 +67,7 @@ export default function NextStepsCard({ role = 'candidate', profileComplete = fa
 
             {step.link.startsWith('#') ? (
               <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg text-center shrink-0">
-                Phase Preview
+                Coming Soon
               </span>
             ) : (
               <Link

@@ -43,7 +43,7 @@ export default function EmployerDashboardPage() {
           <StatCard
             title="Active Job Postings"
             value="0"
-            subtitle="Job posting unlocks in Phase 3"
+            subtitle="Job posting coming soon"
             icon={Briefcase}
           />
           <StatCard
@@ -115,11 +115,11 @@ export default function EmployerDashboardPage() {
 
             <div>
               <span className="inline-flex items-center gap-1 text-[11px] font-bold text-purple-700 dark:text-purple-300 bg-purple-100/70 dark:bg-purple-950/70 px-2.5 py-1 rounded-full border border-purple-200 dark:border-purple-800 mb-2">
-                <Lock className="w-3 h-3 text-purple-500" /> Phase 3 Architecture
+                <Lock className="w-3 h-3 text-purple-500" /> Coming Soon
               </span>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">Post a Returnship or Flexible Role</h3>
               <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed font-medium">
-                The job creation engine, candidate ATS, and AI-powered matchmaker are scheduled for launch in Phase 3. Employers will be able to post targeted 3-6 month returnships and remote roles.
+                The job creation engine, candidate ATS, and AI-powered matchmaker are coming soon. Employers will be able to post targeted 3-6 month returnships and remote roles.
               </p>
             </div>
 
@@ -127,9 +127,9 @@ export default function EmployerDashboardPage() {
               <Button
                 variant="secondary"
                 size="md"
-                onClick={() => alert("Job Posting Engine unlocks in Phase 3. Your employer profile is verified and ready for posting!")}
+                onClick={() => alert("Job Posting Engine is coming soon. Your employer profile is verified and ready for posting!")}
               >
-                Preview Job Posting Form (Phase 3)
+                Preview Job Posting Form (Coming Soon)
               </Button>
             </div>
           </div>

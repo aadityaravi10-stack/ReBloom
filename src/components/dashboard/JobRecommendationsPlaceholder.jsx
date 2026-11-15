@@ -12,11 +12,11 @@ export default function JobRecommendationsPlaceholder() {
           </div>
           <div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Job Matching Ecosystem</h3>
-            <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Curated returnships & flexible openings (Phase 3)</p>
+            <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Curated returnships & flexible openings (Coming Soon)</p>
           </div>
         </div>
         <span className="inline-flex items-center gap-1 text-[11px] font-bold text-purple-700 dark:text-purple-300 bg-purple-100/70 dark:bg-purple-950/70 px-2.5 py-1 rounded-full border border-purple-200 dark:border-purple-800">
-          <Lock className="w-3 h-3" /> Phase 3 Architecture
+          <Lock className="w-3 h-3" /> Coming Soon
         </span>
       </div>
 
@@ -45,9 +45,9 @@ export default function JobRecommendationsPlaceholder() {
       <div className="mt-4 pt-3 border-t border-purple-100 dark:border-purple-900/40 flex items-center justify-between text-xs font-semibold text-purple-900 dark:text-purple-300">
         <span className="flex items-center gap-1.5">
           <Sparkles className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-          Matches will activate upon Phase 3 deployment.
+          Smart matching activates once verified returnships open.
         </span>
-        <span className="font-bold text-purple-700 dark:text-purple-400">No mock jobs displayed</span>
+        <span className="font-bold text-purple-700 dark:text-purple-400">Real Opportunities Only</span>
       </div>
     </Card>
   );

@@ -75,7 +75,7 @@ export const FEATURE_PREVIEWS = [
     tagline: 'Reframes your gap into an asset',
     description: 'Transform your career break into powerful transferrable skills and achievements with specialized AI tailoring.',
     icon: 'FileText',
-    badge: 'Coming in Phase 2',
+    badge: 'Active AI Tool',
     color: 'from-purple-500 to-indigo-600',
   },
   {
@@ -84,7 +84,7 @@ export const FEATURE_PREVIEWS = [
     tagline: 'Opportunities that fit your real life',
     description: 'Find comeback-friendly employers offering returnships, remote flexibility, and mentorship from day one.',
     icon: 'Briefcase',
-    badge: 'Coming in Phase 3',
+    badge: 'Coming Soon',
     color: 'from-pink-500 to-rose-600',
   },
   {
@@ -93,7 +93,7 @@ export const FEATURE_PREVIEWS = [
     tagline: 'Bridge the technology and industry gap',
     description: 'Bite-sized, curated micro-courses and practical sandboxes designed specifically for professionals returning to work.',
     icon: 'GraduationCap',
-    badge: 'Coming in Phase 3',
+    badge: 'Coming Soon',
     color: 'from-violet-500 to-purple-600',
   },
   {
@@ -102,7 +102,7 @@ export const FEATURE_PREVIEWS = [
     tagline: '1-on-1 mentorship with women leaders',
     description: 'Get paired with accomplished mentors who made the same comeback journey and can open doors for you.',
     icon: 'Compass',
-    badge: 'Coming in Phase 4',
+    badge: 'Coming Soon',
     color: 'from-amber-500 to-orange-600',
   },
   {
@@ -111,7 +111,7 @@ export const FEATURE_PREVIEWS = [
     tagline: 'Practice answering gap questions with poise',
     description: 'Simulate behavioral and technical interviews with empathetic AI coaching to build unshakeable confidence.',
     icon: 'Sparkles',
-    badge: 'Coming in Phase 4',
+    badge: 'Active AI Tool',
     color: 'from-teal-500 to-emerald-600',
   },
   {
@@ -120,7 +120,7 @@ export const FEATURE_PREVIEWS = [
     tagline: 'Structured on-ramps to high-impact roles',
     description: 'Paid 3 to 6-month transitional programs with supportive onboarding, cohort camaraderie, and full-time conversion paths.',
     icon: 'Repeat',
-    badge: 'Coming in Phase 3',
+    badge: 'Coming Soon',
     color: 'from-blue-500 to-cyan-600',
   },
 ];

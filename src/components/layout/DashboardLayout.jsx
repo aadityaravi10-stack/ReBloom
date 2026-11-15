@@ -200,7 +200,7 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
                     <Briefcase className="w-3.5 h-3.5" /> Returnship Match
                   </span>
                   <span className="text-[10px] bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 px-1.5 py-0.5 rounded">
-                    Phase 3
+                    Coming Soon
                   </span>
                 </div>
                 <div className="flex items-center justify-between py-1 opacity-70">
@@ -208,7 +208,7 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
                     <GraduationCap className="w-3.5 h-3.5" /> Skill Lab
                   </span>
                   <span className="text-[10px] bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 px-1.5 py-0.5 rounded">
-                    Phase 3
+                    Coming Soon
                   </span>
                 </div>
               </div>
