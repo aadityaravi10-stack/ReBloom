@@ -12,24 +12,52 @@ import {
   Briefcase,
   GraduationCap,
   Sparkle,
-  ArrowRight,
-  Users,
-  Heart,
-  CheckCircle2,
-  HelpCircle,
-  Calendar,
+  Quote,
+  RefreshCw,
 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import ReBloomLogo from '../common/ReBloomLogo';
 import ThemeToggle from '../common/ThemeToggle';
 import SupabaseConfigBanner from '../common/SupabaseConfigBanner';
 
+const COMEBACK_QUOTES = [
+  {
+    quote:
+      "A career break is not empty space — it is where resilience, adaptability, and real life wisdom were forged. You aren't starting over, you are stepping forward from experience.",
+    author: 'Daily Comeback Spark',
+  },
+  {
+    quote:
+      "Skills don't expire, and your leadership hasn't vanished. The professional world needs the grounded strength and perspective you bring back.",
+    author: 'Returnee Mentor Circle',
+  },
+  {
+    quote:
+      "Progress is rarely a straight ladder. Sometimes stepping back or pausing gives you the clarity to leap higher than ever before.",
+    author: 'Women in Leadership',
+  },
+  {
+    quote:
+      'Every transition you managed during your break taught you patience, empathy, and problem solving. Wear your pause with pride.',
+    author: 'Career Comeback Coach',
+  },
+  {
+    quote:
+      'Confidence returns with action. Take one small step today — your comeback story is being written on your own terms.',
+    author: 'ReBloom Affirmation',
+  },
+];
+
 export default function DashboardLayout({ children, role = 'candidate', title, subtitle }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [circleJoined, setCircleJoined] = useState(false);
+  const [quoteIdx, setQuoteIdx] = useState(0);
   const { user, profile, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+
+  const nextQuote = () => {
+    setQuoteIdx((prev) => (prev + 1) % COMEBACK_QUOTES.length);
+  };
 
   const handleLogout = async () => {
     await logout();
@@ -114,11 +142,12 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
       {/* Main Container */}
       <div className="flex-1 flex max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 gap-6">
         {/* Sidebar Desktop */}
-        <aside className="hidden lg:block w-64 shrink-0">
-          <div className="bg-white dark:bg-[#130E24] rounded-3xl p-4.5 border border-purple-200/80 dark:border-purple-800/40 shadow-sm sticky top-20 max-h-[calc(100vh-5.5rem)] overflow-y-auto no-scrollbar space-y-4">
+        <aside className="hidden lg:block w-64 shrink-0 space-y-4 sticky top-20">
+          {/* Block 1: Main Dashboard Navigation & Status Card */}
+          <div className="bg-white dark:bg-[#130E24] rounded-3xl p-5 border border-purple-200/80 dark:border-purple-800/40 shadow-sm space-y-5">
             {/* User Profile Card Snippet */}
-            <div className="bg-gradient-to-br from-purple-50 via-purple-50/50 to-pink-50/30 dark:from-purple-950/40 dark:to-[#18132C] p-3.5 rounded-2xl border border-purple-100 dark:border-purple-800/40 text-center">
-              <div className="w-12 h-12 rounded-2xl mx-auto bg-gradient-to-tr from-purple-600 to-pink-500 text-white font-bold text-base flex items-center justify-center shadow-md mb-2">
+            <div className="bg-gradient-to-br from-purple-50 via-purple-50/50 to-pink-50/30 dark:from-purple-950/40 dark:to-[#18132C] p-4 rounded-2xl border border-purple-100 dark:border-purple-800/40 text-center">
+              <div className="w-14 h-14 rounded-2xl mx-auto bg-gradient-to-tr from-purple-600 to-pink-500 text-white font-bold text-lg flex items-center justify-center shadow-md mb-2.5">
                 {displayName.charAt(0)}
               </div>
               <h4 className="font-bold text-sm text-slate-900 dark:text-white truncate">{displayName}</h4>
@@ -129,7 +158,7 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
 
             {/* Navigation links */}
             <nav className="space-y-1">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300 px-3 mb-1.5">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300 px-3 mb-2">
                 Navigation
               </p>
               {navItems.map((item) => {
@@ -139,7 +168,7 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
                   <Link
                     key={item.name}
                     to={item.path}
-                    className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-semibold transition-all ${
+                    className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                       isActive
                         ? 'bg-purple-600 text-white shadow-md'
                         : 'text-slate-700 dark:text-slate-300 hover:bg-purple-50 dark:hover:bg-purple-950/60 hover:text-purple-700 dark:hover:text-white'
@@ -153,12 +182,12 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
             </nav>
 
             {/* Roadmap preview */}
-            <div className="border-t border-purple-100 dark:border-purple-900/40 pt-3">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300 px-3 mb-1.5">
+            <div className="border-t border-purple-100 dark:border-purple-900/40 pt-4">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300 px-3 mb-2">
                 Roadmap Modules
               </p>
               <div className="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 px-3 font-medium">
-                <div className="flex items-center justify-between py-0.5">
+                <div className="flex items-center justify-between py-1">
                   <span className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold">
                     <Sparkle className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> AI Career Studio
                   </span>
@@ -166,7 +195,7 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
                     Live
                   </span>
                 </div>
-                <div className="flex items-center justify-between py-0.5 opacity-70">
+                <div className="flex items-center justify-between py-1 opacity-70">
                   <span className="flex items-center gap-2">
                     <Briefcase className="w-3.5 h-3.5" /> Returnship Match
                   </span>
@@ -174,7 +203,7 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
                     Phase 3
                   </span>
                 </div>
-                <div className="flex items-center justify-between py-0.5 opacity-70">
+                <div className="flex items-center justify-between py-1 opacity-70">
                   <span className="flex items-center gap-2">
                     <GraduationCap className="w-3.5 h-3.5" /> Skill Lab
                   </span>
@@ -184,111 +213,44 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* AI Comeback Studio Spotlight Widget */}
-            {isCandidate ? (
-              <div className="relative overflow-hidden rounded-2xl p-3.5 bg-gradient-to-br from-purple-900/25 via-purple-950/20 to-pink-950/30 border border-purple-200 dark:border-purple-600/40 shadow-xs group">
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="inline-flex items-center gap-1.5 text-[10px] font-extrabold text-purple-700 dark:text-purple-300 uppercase tracking-wider">
-                    <Sparkles className="w-3 h-3 text-pink-500" />
-                    AI Studio
-                  </span>
-                  <span className="text-[10px] font-bold bg-pink-100 dark:bg-pink-950/80 text-pink-700 dark:text-pink-300 px-1.5 py-0.5 rounded-full border border-pink-200 dark:border-pink-800">
-                    Empathetic
-                  </span>
-                </div>
-                <h5 className="text-xs font-bold text-slate-900 dark:text-white mb-0.5">
-                  Reframe Your Break
-                </h5>
-                <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-snug mb-2.5">
-                  Turn career pauses into high-impact leadership stories.
-                </p>
-                <Link
-                  to="/candidate/tools"
-                  className="flex items-center justify-between w-full px-3 py-1.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-xs font-bold shadow-xs hover:shadow-sm transition-all group-hover:scale-[1.01]"
-                >
-                  <span>Open Gap Reframer</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
-              </div>
-            ) : (
-              <div className="relative overflow-hidden rounded-2xl p-3.5 bg-gradient-to-br from-purple-900/25 via-purple-950/20 to-pink-950/30 border border-purple-200 dark:border-purple-600/40 shadow-xs">
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="inline-flex items-center gap-1.5 text-[10px] font-extrabold text-purple-700 dark:text-purple-300 uppercase tracking-wider">
-                    <Briefcase className="w-3 h-3 text-purple-500" />
-                    Returnships
-                  </span>
-                  <span className="text-[10px] font-bold bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 px-1.5 py-0.5 rounded">
-                    Employer
-                  </span>
-                </div>
-                <h5 className="text-xs font-bold text-slate-900 dark:text-white mb-0.5">
-                  Hire Returnee Talent
-                </h5>
-                <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-snug mb-2.5">
-                  Tap into high-resilience, experienced women returning to leadership.
-                </p>
-                <Link
-                  to="/employer/profile"
-                  className="flex items-center justify-between w-full px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold shadow-xs transition-all"
-                >
-                  <span>Manage Cohorts</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            )}
+          {/* Block 2: Motivational Quote Block (with small gap separation) */}
+          <div className="bg-white dark:bg-[#130E24] rounded-3xl p-5 border border-purple-200/80 dark:border-purple-800/40 shadow-sm relative overflow-hidden space-y-3 group">
+            {/* Ambient neon backglow */}
+            <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-gradient-to-tr from-purple-500/10 via-pink-500/15 to-transparent rounded-full blur-xl pointer-events-none" />
 
-            {/* Daily Comeback Spark & Community Circle */}
-            <div className="rounded-2xl p-3 bg-gradient-to-b from-purple-50/70 to-pink-50/30 dark:from-[#18132C] dark:to-[#140E24] border border-purple-100 dark:border-purple-800/50 space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300 flex items-center gap-1.5">
-                  <Users className="w-3.5 h-3.5 text-pink-500" />
-                  Returnee Circle
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-lg bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-700 dark:text-purple-300">
+                  <Sparkles className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300">
+                  Daily Comeback Spark
                 </span>
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  1,420+ Online
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-600 dark:text-slate-300 italic leading-snug">
-                "A pause isn't empty time — it's where resilience, adaptability, and wisdom grew." 🌸
-              </p>
-              <div className="pt-2 border-t border-purple-100/80 dark:border-purple-900/40 flex items-center justify-between text-[11px]">
-                <span className="text-slate-500 dark:text-slate-400 font-medium">Coffee Circle:</span>
-                <span className="font-bold text-purple-700 dark:text-purple-300">Wed @ 6 PM IST</span>
               </div>
               <button
                 type="button"
-                onClick={() => setCircleJoined(!circleJoined)}
-                className={`w-full py-1.5 px-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
-                  circleJoined
-                    ? 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700'
-                    : 'bg-white dark:bg-[#20183A] text-purple-700 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-[#281E48] border border-purple-200 dark:border-purple-700 shadow-2xs'
-                }`}
+                onClick={nextQuote}
+                title="Next Affirmation"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-purple-600 dark:hover:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-950/60 transition-all cursor-pointer"
               >
-                {circleJoined ? (
-                  <>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                    <span>RSVP Confirmed 🌸</span>
-                  </>
-                ) : (
-                  <>
-                    <Calendar className="w-3.5 h-3.5 text-pink-500" />
-                    <span>RSVP for Free Circle</span>
-                  </>
-                )}
+                <RefreshCw className="w-3.5 h-3.5 hover:rotate-180 transition-transform duration-500" />
               </button>
             </div>
 
-            {/* Safe Community / Helpdesk Mini-Footer */}
-            <div className="pt-1.5 border-t border-purple-100 dark:border-purple-900/40 flex items-center justify-between px-1 text-[11px] text-slate-500 dark:text-slate-400">
-              <span className="flex items-center gap-1 font-medium">
-                <Heart className="w-3 h-3 text-pink-500 fill-pink-500/30" />
-                <span>100% Women-Safe</span>
+            <div className="relative pl-3.5 border-l-2 border-purple-400 dark:border-purple-500/60">
+              <Quote className="w-4 h-4 text-purple-400/30 dark:text-purple-500/30 absolute -top-1 -left-1 transform -scale-x-100 opacity-60" />
+              <p className="text-xs text-slate-700 dark:text-slate-200 italic leading-relaxed pt-0.5">
+                "{COMEBACK_QUOTES[quoteIdx].quote}"
+              </p>
+            </div>
+
+            <div className="flex items-center justify-between pt-1 text-[11px]">
+              <span className="font-bold text-purple-700 dark:text-purple-300">
+                — {COMEBACK_QUOTES[quoteIdx].author}
               </span>
-              <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-1.5 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
-                24/7 Support
-              </span>
+              <span className="text-sm">🌸</span>
             </div>
           </div>
         </aside>
@@ -337,23 +299,26 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
                   })}
                 </nav>
 
-                {/* Mobile AI Spotlight */}
-                <div className="p-3.5 rounded-2xl bg-gradient-to-br from-purple-900/25 via-purple-950/20 to-pink-950/30 border border-purple-200 dark:border-purple-700/50">
-                  <div className="flex items-center justify-between mb-1">
+                {/* Mobile Motivational Quote Block */}
+                <div className="p-4 rounded-2xl bg-purple-50/70 dark:bg-[#18132C] border border-purple-200 dark:border-purple-800/40 space-y-2">
+                  <div className="flex items-center justify-between">
                     <span className="text-[10px] font-bold uppercase text-purple-700 dark:text-purple-300 flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-pink-500" /> AI Coach
+                      <Sparkles className="w-3 h-3 text-pink-500" /> Daily Comeback Spark
                     </span>
-                    <span className="text-[10px] font-bold text-pink-600 dark:text-pink-300 bg-pink-100 dark:bg-pink-950 px-1.5 py-0.5 rounded">Live</span>
+                    <button
+                      type="button"
+                      onClick={nextQuote}
+                      className="p-1 text-slate-400 hover:text-purple-600 cursor-pointer"
+                    >
+                      <RefreshCw className="w-3 h-3" />
+                    </button>
                   </div>
-                  <p className="text-xs font-bold text-slate-900 dark:text-white mb-1">Reframe Your Career Break</p>
-                  <Link
-                    to="/candidate/tools"
-                    onClick={() => setSidebarOpen(false)}
-                    className="flex items-center justify-between text-xs font-bold text-purple-700 dark:text-purple-300 hover:underline pt-1"
-                  >
-                    <span>Launch AI Studio</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                  <p className="text-xs italic text-slate-700 dark:text-slate-200 leading-snug">
+                    "{COMEBACK_QUOTES[quoteIdx].quote}"
+                  </p>
+                  <p className="text-[10px] font-bold text-purple-600 dark:text-purple-400 text-right">
+                    — {COMEBACK_QUOTES[quoteIdx].author} 🌸
+                  </p>
                 </div>
               </div>
 
