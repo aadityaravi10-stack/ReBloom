@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import Badge from '../common/Badge';
 import Card from '../common/Card';
+import CompanyLogo from '../common/CompanyLogo';
 
 export default function ReturnshipCard({
   job,
@@ -29,9 +30,12 @@ export default function ReturnshipCard({
         {/* Top Header: Logo + Company & Title + Bookmark */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-start gap-3.5 min-w-0 flex-1">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 text-white font-bold text-xl flex items-center justify-center shadow-xs shrink-0 mt-0.5">
-              {job.logo || '💼'}
-            </div>
+            <CompanyLogo
+              company={job.company}
+              logo={job.logo}
+              size="md"
+              className="mt-0.5"
+            />
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2 flex-wrap mb-1">
                 <span className="text-xs font-black text-purple-700 dark:text-purple-300 tracking-wide uppercase">

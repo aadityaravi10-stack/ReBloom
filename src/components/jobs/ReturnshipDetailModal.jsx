@@ -16,6 +16,7 @@ import {
   Building2,
 } from 'lucide-react';
 import Badge from '../common/Badge';
+import CompanyLogo from '../common/CompanyLogo';
 
 export default function ReturnshipDetailModal({
   job,
@@ -67,9 +68,7 @@ export default function ReturnshipDetailModal({
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pr-10">
             <div className="flex items-start gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 text-white font-bold text-2xl flex items-center justify-center shadow-md shrink-0">
-                {job.logo || '💼'}
-              </div>
+              <CompanyLogo company={job.company} logo={job.logo} size="lg" />
               <div>
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
                   <span className="text-xs font-extrabold text-purple-700 dark:text-purple-300">

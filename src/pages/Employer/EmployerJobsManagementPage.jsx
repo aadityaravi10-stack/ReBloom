@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import DashboardLayout from '../../components/layout/DashboardLayout';
 import Card from '../../components/common/Card';
+import CompanyLogo from '../../components/common/CompanyLogo';
 import Button from '../../components/common/Button';
 import Badge from '../../components/common/Badge';
 import { jobsService } from '../../services/jobsService';
@@ -82,9 +83,7 @@ export default function EmployerJobsManagementPage() {
               <Card key={job.id} hoverEffect className="p-5 flex flex-col justify-between h-full border-purple-200/80 dark:border-purple-800/40">
                 <div>
                   <div className="flex items-start justify-between mb-3">
-                    <div className="w-10 h-10 rounded-2xl bg-purple-100 dark:bg-purple-900/60 text-purple-700 dark:text-purple-300 flex items-center justify-center font-bold text-lg">
-                      {job.logo || '💼'}
-                    </div>
+                    <CompanyLogo company={job.company} logo={job.logo} size="md" />
                     <span className="text-[10px] font-bold text-pink-700 dark:text-pink-300 bg-pink-100 dark:bg-pink-950 px-2.5 py-0.5 rounded-full">
                       {job.conversionRate || '88% Conversion'}
                     </span>
