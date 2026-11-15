@@ -12,6 +12,8 @@ import {
   Building2,
   MapPin,
   SlidersHorizontal,
+  LayoutGrid,
+  List,
 } from 'lucide-react';
 import DashboardLayout from '../../components/layout/DashboardLayout';
 import ReturnshipCard from '../../components/jobs/ReturnshipCard';
@@ -25,6 +27,7 @@ export default function ReturnshipExplorerPage() {
   const [jobs, setJobs] = useState([]);
   const [selectedJob, setSelectedJob] = useState(null);
   const [activeTab, setActiveTab] = useState('all'); // 'all' | 'applied' | 'saved'
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'list'
   const [search, setSearch] = useState('');
   const [workTypeFilter, setWorkTypeFilter] = useState('All');
   const [departmentFilter, setDepartmentFilter] = useState('All');
@@ -174,49 +177,87 @@ export default function ReturnshipExplorerPage() {
             </select>
           </div>
 
-          {/* Navigation Tabs */}
-          <div className="flex items-center gap-2 border-t border-purple-100 dark:border-purple-900/40 pt-3 flex-wrap">
-            <button
-              type="button"
-              onClick={() => setActiveTab('all')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'all'
-                  ? 'bg-purple-600 text-white shadow-sm'
-                  : 'bg-purple-50/60 dark:bg-purple-950/40 text-slate-700 dark:text-slate-300 hover:bg-purple-100 dark:hover:bg-purple-900/40'
-              }`}
-            >
-              All Open Cohorts ({jobs.length})
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('applied')}
-              className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'applied'
-                  ? 'bg-purple-600 text-white shadow-sm'
-                  : 'bg-purple-50/60 dark:bg-purple-950/40 text-slate-700 dark:text-slate-300 hover:bg-purple-100 dark:hover:bg-purple-900/40'
-              }`}
-            >
-              <FileCheck className="w-3.5 h-3.5" />
-              <span>My Applications ({appliedJobs.length})</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('saved')}
-              className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'saved'
-                  ? 'bg-purple-600 text-white shadow-sm'
-                  : 'bg-purple-50/60 dark:bg-purple-950/40 text-slate-700 dark:text-slate-300 hover:bg-purple-100 dark:hover:bg-purple-900/40'
-              }`}
-            >
-              <Heart className="w-3.5 h-3.5 text-pink-500" />
-              <span>Saved Returnships ({bookmarks.length})</span>
-            </button>
+          {/* Navigation Tabs & View Mode Switcher */}
+          <div className="flex items-center justify-between gap-3 border-t border-purple-100 dark:border-purple-900/40 pt-3 flex-wrap">
+            <div className="flex items-center gap-2 flex-wrap">
+              <button
+                type="button"
+                onClick={() => setActiveTab('all')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeTab === 'all'
+                    ? 'bg-purple-600 text-white shadow-sm'
+                    : 'bg-purple-50/60 dark:bg-purple-950/40 text-slate-700 dark:text-slate-300 hover:bg-purple-100 dark:hover:bg-purple-900/40'
+                }`}
+              >
+                All Open Cohorts ({jobs.length})
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('applied')}
+                className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeTab === 'applied'
+                    ? 'bg-purple-600 text-white shadow-sm'
+                    : 'bg-purple-50/60 dark:bg-purple-950/40 text-slate-700 dark:text-slate-300 hover:bg-purple-100 dark:hover:bg-purple-900/40'
+                }`}
+              >
+                <FileCheck className="w-3.5 h-3.5" />
+                <span>My Applications ({appliedJobs.length})</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('saved')}
+                className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeTab === 'saved'
+                    ? 'bg-purple-600 text-white shadow-sm'
+                    : 'bg-purple-50/60 dark:bg-purple-950/40 text-slate-700 dark:text-slate-300 hover:bg-purple-100 dark:hover:bg-purple-900/40'
+                }`}
+              >
+                <Heart className="w-3.5 h-3.5 text-pink-500" />
+                <span>Saved Returnships ({bookmarks.length})</span>
+              </button>
+            </div>
+
+            {/* View Mode Toggle: 2-Col Grid vs Full-Width List */}
+            <div className="flex items-center gap-1 bg-purple-50/70 dark:bg-[#18132C] p-1 rounded-xl border border-purple-200/70 dark:border-purple-800/50 ml-auto">
+              <button
+                type="button"
+                onClick={() => setViewMode('grid')}
+                title="Spacious 2-Column Grid"
+                className={`px-2.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                  viewMode === 'grid'
+                    ? 'bg-purple-600 text-white shadow-2xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-300'
+                }`}
+              >
+                <LayoutGrid className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">2-Column Grid</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode('list')}
+                title="Full-Width List View"
+                className={`px-2.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                  viewMode === 'list'
+                    ? 'bg-purple-600 text-white shadow-2xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-300'
+                }`}
+              >
+                <List className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Full-Width List</span>
+              </button>
+            </div>
           </div>
         </Card>
 
-        {/* Returnship Cards Grid */}
+        {/* Returnship Cards Container: Spacious 2-Column Grid or Full-Width Cohort List */}
         {displayedJobs.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div
+            className={
+              viewMode === 'grid'
+                ? 'grid grid-cols-1 xl:grid-cols-2 gap-5 sm:gap-6'
+                : 'flex flex-col gap-5'
+            }
+          >
             {displayedJobs.map((job) => (
               <ReturnshipCard
                 key={job.id}

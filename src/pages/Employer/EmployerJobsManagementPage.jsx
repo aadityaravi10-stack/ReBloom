@@ -74,8 +74,8 @@ export default function EmployerJobsManagementPage() {
           </Link>
         </div>
 
-        {/* Cohort Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Cohort Cards Grid: Spacious 2-Column Responsive Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {jobs.map((job) => {
             const count = jobsService.getJobApplicants(job.id).length;
             return (
