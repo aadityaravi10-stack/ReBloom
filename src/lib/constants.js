@@ -8,6 +8,28 @@ export const CAREER_BREAK_REASONS = [
   'Other Personal Reasons',
 ];
 
+export const EDUCATION_DEGREES = [
+  'B.Tech / B.E. (Engineering)',
+  'B.Sc (Bachelor of Science)',
+  'B.Com (Bachelor of Commerce)',
+  'B.A. (Bachelor of Arts)',
+  'BBA / BMS (Business Administration)',
+  'BCA (Computer Applications)',
+  'M.Tech / M.E. (Engineering)',
+  'MBA / PGDM (Management)',
+  'M.Sc (Master of Science)',
+  'M.Com (Master of Commerce)',
+  'M.A. (Master of Arts)',
+  'MCA (Computer Applications)',
+  'Ph.D. / Doctorate',
+  'Diploma / Polytechnic',
+  'Chartered Accountant (CA) / CFA / CS',
+  'MBBS / BDS / B.Pharm / Nursing',
+  'LLB / LLM (Law)',
+  'B.Des / M.Des / Fine Arts',
+  'Other',
+];
+
 export const WORK_TYPES = [
   { id: 'Remote', label: 'Remote (Work from Anywhere)' },
   { id: 'Hybrid', label: 'Hybrid (Partially in Office)' },

@@ -4,6 +4,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { profileService } from '../../services/profileService';
 import {
   CAREER_BREAK_REASONS,
+  EDUCATION_DEGREES,
   WORK_TYPES,
   WORK_HOURS,
   POPULAR_SKILLS,
@@ -33,6 +34,17 @@ export default function CandidateProfileForm({ onSuccess }) {
     bio: candidateProfile?.bio || '',
   });
 
+  const [selectedDegree, setSelectedDegree] = useState(() => {
+    const existing = candidateProfile?.education || '';
+    if (!existing) return '';
+    return EDUCATION_DEGREES.includes(existing) ? existing : 'Other';
+  });
+  const [customDegree, setCustomDegree] = useState(() => {
+    const existing = candidateProfile?.education || '';
+    if (!existing) return '';
+    return EDUCATION_DEGREES.includes(existing) ? '' : existing;
+  });
+
   const [customSkill, setCustomSkill] = useState('');
   const [customInterest, setCustomInterest] = useState('');
   const [loading, setLoading] = useState(false);
@@ -41,11 +53,18 @@ export default function CandidateProfileForm({ onSuccess }) {
 
   useEffect(() => {
     if (profile || candidateProfile) {
+      const edu = candidateProfile?.education || '';
+      if (edu) {
+        const isStandard = EDUCATION_DEGREES.includes(edu);
+        setSelectedDegree(isStandard ? edu : 'Other');
+        setCustomDegree(isStandard ? '' : edu);
+      }
+
       setFormData((prev) => ({
         ...prev,
         full_name: profile?.full_name || prev.full_name,
         avatar_url: profile?.avatar_url || prev.avatar_url,
-        education: candidateProfile?.education || prev.education,
+        education: edu || prev.education,
         previous_role: candidateProfile?.previous_role || prev.previous_role,
         previous_company: candidateProfile?.previous_company || prev.previous_company,
         years_of_experience: candidateProfile?.years_of_experience ?? prev.years_of_experience,
@@ -60,6 +79,28 @@ export default function CandidateProfileForm({ onSuccess }) {
       }));
     }
   }, [profile, candidateProfile]);
+
+  const handleDegreeChange = (e) => {
+    const val = e.target.value;
+    setSelectedDegree(val);
+    if (val === 'Other') {
+      setFormData((prev) => ({ ...prev, education: customDegree }));
+    } else {
+      setFormData((prev) => ({ ...prev, education: val }));
+    }
+    if (errors.education) {
+      setErrors((prev) => ({ ...prev, education: null }));
+    }
+  };
+
+  const handleCustomDegreeChange = (e) => {
+    const val = e.target.value;
+    setCustomDegree(val);
+    setFormData((prev) => ({ ...prev, education: val }));
+    if (errors.education) {
+      setErrors((prev) => ({ ...prev, education: null }));
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -104,7 +145,11 @@ export default function CandidateProfileForm({ onSuccess }) {
   const validate = () => {
     const newErrors = {};
     if (!formData.full_name?.trim()) newErrors.full_name = 'Full name is required';
-    if (!formData.education?.trim()) newErrors.education = 'Education degree or field is required';
+    if (!formData.education?.trim()) {
+      newErrors.education = selectedDegree === 'Other'
+        ? 'Please specify your degree / major in the other field'
+        : 'Please select your highest education degree';
+    }
     if (!formData.previous_role?.trim()) newErrors.previous_role = 'Previous job role is required';
     if (!formData.previous_company?.trim()) newErrors.previous_company = 'Previous company is required';
     if (formData.years_of_experience === '' || formData.years_of_experience < 0) {
@@ -243,15 +288,41 @@ export default function CandidateProfileForm({ onSuccess }) {
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Input
-            label="Highest Education Degree"
-            name="education"
-            value={formData.education}
-            onChange={handleChange}
-            error={errors.education}
-            placeholder="e.g. B.Tech in Computer Science, MBA, B.Com"
-            required
-          />
+          <div className="space-y-3">
+            <Input
+              as="select"
+              label="Highest Education Degree"
+              id="education_select"
+              name="education_select"
+              value={selectedDegree}
+              onChange={handleDegreeChange}
+              error={selectedDegree !== 'Other' ? errors.education : undefined}
+              required
+            >
+              <option value="" className="bg-white dark:bg-[#18132C] text-slate-900 dark:text-white">
+                Select your major degree
+              </option>
+              {EDUCATION_DEGREES.map((deg) => (
+                <option key={deg} value={deg} className="bg-white dark:bg-[#18132C] text-slate-900 dark:text-white">
+                  {deg}
+                </option>
+              ))}
+            </Input>
+
+            {selectedDegree === 'Other' && (
+              <Input
+                label="Specify Other Degree / Major"
+                id="custom_education"
+                name="custom_education"
+                placeholder="e.g. Dual Degree, B.Arch, Fashion Tech, Journalism"
+                value={customDegree}
+                onChange={handleCustomDegreeChange}
+                error={errors.education}
+                required
+              />
+            )}
+          </div>
+
           <Input
             label="Years of Experience (Before Break)"
             name="years_of_experience"
