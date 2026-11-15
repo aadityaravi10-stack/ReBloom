@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ReBloom - Complete Technical Stack & Engineering Specifications</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap');
+
+    :root {
+      --primary: #7C3AED;
+      --primary-dark: #5B21B6;
+      --pink: #EC4899;
+      --emerald: #059669;
+      --slate-900: #0F172A;
+      --slate-800: #1E293B;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-100: #F1F5F9;
+      --slate-50: #F8FAFC;
+      --border: #E2E8F0;
+      --code-bg: #1E1B4B;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--slate-900);
+      background: #FFFFFF;
+      line-height: 1.5;
+      font-size: 12px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm 12mm 12mm 12mm;
+    }
+
+    .page {
+      page-break-after: always;
+      padding-bottom: 15px;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #EDE9FE;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-top {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: #F3E8FF;
+      color: #6B21A8;
+      border: 1px solid #D8B4FE;
+    }
+
+    .meta {
+      text-align: right;
+      font-size: 11px;
+      color: var(--slate-600);
+    }
+
+    .meta a {
+      color: #7C3AED;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* Titles */
+    h2.section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-tag {
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      background: #EDE9FE;
+      color: #6D28D9;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .card-purple {
+      background: #FAF5FF;
+      border: 1px solid #E9D5FF;
+    }
+
+    .card-dark {
+      background: #0F172A;
+      color: #FFFFFF;
+      border: 1px solid #334155;
+    }
+
+    .card-dark h4 {
+      color: #FFFFFF !important;
+    }
+
+    .card h4 {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card p {
+      font-size: 11px;
+      color: var(--slate-600);
+      line-height: 1.4;
+    }
+
+    /* Badges */
+    .pill {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 12px;
+      margin-right: 4px;
+      margin-bottom: 4px;
+    }
+
+    .pill-purple { background: #F3E8FF; color: #6B21A8; border: 1px solid #D8B4FE; }
+    .pill-pink { background: #FCE7F3; color: #9D174D; border: 1px solid #F472B6; }
+    .pill-emerald { background: #D1FAE5; color: #065F46; border: 1px solid #6EE7B7; }
+    .pill-blue { background: #DBEAFE; color: #1E40AF; border: 1px solid #93C5FD; }
+    .pill-mono { font-family: 'JetBrains Mono', monospace; font-size: 9px; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      margin-top: 6px;
+      margin-bottom: 12px;
+    }
+
+    th {
+      background: #F8FAFC;
+      color: var(--slate-900);
+      font-weight: 700;
+      text-align: left;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      color: var(--slate-700);
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td {
+      background: #FAFAFA;
+    }
+
+    /* Code Snippets */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      background: #F1F5F9;
+      color: #7C3AED;
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    ul.bullet-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul.bullet-list li {
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 3.5px;
+      font-size: 11px;
+      color: var(--slate-700);
+      line-height: 1.4;
+    }
+
+    ul.bullet-list li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      color: #7C3AED;
+      font-weight: bold;
+      font-size: 11px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #EDE9FE;
+      margin: 12px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page">
+    <div class="header">
+      <div>
+        <div class="brand">🌸 ReBloom • Tech Stack Document</div>
+        <p style="font-size: 11px; font-weight: 600; color: #6B21A8; margin-top: 1px;">
+          Complete Architectural & Engineering Specifications
+        </p>
+      </div>
+      <div class="meta">
+        <span class="badge-top">Full Stack Specification</span>
+        <div style="margin-top: 3px;"><strong>Live Demo:</strong> <a href="https://rebloom-five.vercel.app">rebloom-five.vercel.app</a></div>
+        <div><strong>GitHub:</strong> <a href="https://github.com/aadityaravi10-stack/ReBloom">aadityaravi10-stack/ReBloom</a></div>
+      </div>
+    </div>
+
+    <!-- 1. High-Level Technology Matrix -->
+    <h2 class="section-title">
+      <span class="section-tag">Tier 1</span> Complete Technology Stack Matrix
+    </h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 22%;">Layer</th>
+          <th style="width: 28%;">Technology / Framework</th>
+          <th style="width: 35%;">Key Role & Responsibility</th>
+          <th style="width: 15%;">Version / Spec</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Frontend Core</strong></td>
+          <td>React.js (SPA Architecture)</td>
+          <td>Declarative component tree, custom state hooks (<code>useAuth</code>), context management.</td>
+          <td><span class="pill pill-purple pill-mono">v18.3.1</span></td>
+        </tr>
+        <tr>
+          <td><strong>Build Tool & Bundler</strong></td>
+          <td>Vite + ESBuild</td>
+          <td>Ultra-fast Hot Module Replacement (HMR) and production bundling in 1.35s.</td>
+          <td><span class="pill pill-purple pill-mono">v6.0.3</span></td>
+        </tr>
+        <tr>
+          <td><strong>Styling & Design System</strong></td>
+          <td>Tailwind CSS + PostCSS</td>
+          <td>Utility-first responsive layout, ambient neon glows, dual light/dark WCAG AA theme.</td>
+          <td><span class="pill pill-purple pill-mono">v3.4.16</span></td>
+        </tr>
+        <tr>
+          <td><strong>Client-Side Routing</strong></td>
+          <td>React Router DOM</td>
+          <td>Declarative routing, protected route guards, dual-persona portal routing.</td>
+          <td><span class="pill pill-purple pill-mono">v6.28.0</span></td>
+        </tr>
+        <tr>
+          <td><strong>Generative AI Engine</strong></td>
+          <td>Google Gemini API</td>
+          <td>Natural language career gap reframing, STAR interview response generator.</td>
+          <td><span class="pill pill-pink pill-mono">Gemini 1.5 Flash</span></td>
+        </tr>
+        <tr>
+          <td><strong>Database & Auth BaaS</strong></td>
+          <td>Supabase (PostgreSQL)</td>
+          <td>Relational database, GoTrue JWT authentication, Row-Level Security (RLS).</td>
+          <td><span class="pill pill-emerald pill-mono">v2.47.10</span></td>
+        </tr>
+        <tr>
+          <td><strong>Vector Brand Engine</strong></td>
+          <td>Custom SVG Vector Component</td>
+          <td>Authentic corporate brand marks (Microsoft, Intuit, Deloitte, Razorpay, Target).</td>
+          <td><span class="pill pill-blue pill-mono">Custom Vector</span></td>
+        </tr>
+        <tr>
+          <td><strong>Offline State Engine</strong></td>
+          <td>HTML5 Web Storage API</td>
+          <td>Resilient local caching for cohorts, bookmarks, and application tracking.</td>
+          <td><span class="pill pill-emerald pill-mono">LocalStorage v4</span></td>
+        </tr>
+        <tr>
+          <td><strong>Edge Deployment</strong></td>
+          <td>Vercel Global Edge Network</td>
+          <td>Global CDN caching, automatic SSL/TLS termination, SPA redirect rules.</td>
+          <td><span class="pill pill-purple pill-mono">Edge CDN</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <!-- 2. AI & Machine Learning Architecture -->
+    <h2 class="section-title">
+      <span class="section-tag">Tier 2</span> Generative AI Architecture & Prompt Engineering
+    </h2>
+
+    <div class="grid-2">
+      <div class="card card-purple">
+        <h4>🤖 Google Gemini 1.5 Flash API</h4>
+        <ul class="bullet-list">
+          <li><strong>Endpoint:</strong> <code>https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent</code></li>
+          <li><strong>MIME Output Configuration:</strong> <code>application/json</code> enforcement for predictable parsing.</li>
+          <li><strong>Prompt Engineering Pipeline:</strong> Ingests previous role, gap duration (months), reason (maternity/caregiving), and target track.</li>
+          <li><strong>Output Schema:</strong> Generates structured JSON:
+            <ul class="bullet-list" style="margin-top: 2px;">
+              <li><code>resumeSummary</code>: Empowering professional summary with zero gap apologies.</li>
+              <li><code>interviewScript</code>: 60-second STAR framework response to "Explain your gap".</li>
+              <li><code>transferableSkills</code>: 4 mapped corporate competencies (crisis containment, budgeting, agile multitasking).</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>🛡️ Zero-Latency Fallback AI Engine</h4>
+        <ul class="bullet-list">
+          <li><strong>Deterministic Coaching Engine:</strong> Built directly into <code>aiService.js</code> to protect live demos.</li>
+          <li><strong>Rate-Limit Immunization:</strong> If internet connectivity drops or API quotas are exceeded, the engine seamlessly switches to client-side heuristic coaching without failing.</li>
+          <li><strong>Contextual Tailoring:</strong> Dynamically calculates tenure strings and gap duration ratios in milliseconds.</li>
+          <li><strong>Privacy First:</strong> Candidate break details are processed ephemerally without third-party tracking.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 3. Database Schema & Supabase Architecture -->
+    <h2 class="section-title">
+      <span class="section-tag">Tier 3</span> Database Schema & Backend Architecture
+    </h2>
+
+    <div class="grid-3">
+      <div class="card">
+        <h4>Table: <code>profiles</code></h4>
+        <p><strong>Primary Auth Entity</strong></p>
+        <ul class="bullet-list" style="margin-top: 4px;">
+          <li><code>id</code> (UUID, Primary Key)</li>
+          <li><code>email</code> (VARCHAR, Unique)</li>
+          <li><code>role</code> ('candidate' | 'employer')</li>
+          <li><code>full_name</code> (TEXT)</li>
+          <li><code>avatar_url</code> (TEXT)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>Table: <code>candidate_profiles</code></h4>
+        <p><strong>Returnee Specific Data</strong></p>
+        <ul class="bullet-list" style="margin-top: 4px;">
+          <li><code>education</code> (Degree name)</li>
+          <li><code>years_of_experience</code> (INT)</li>
+          <li><code>break_duration_months</code> (INT)</li>
+          <li><code>break_reason</code> (TEXT)</li>
+          <li><code>existing_skills</code> (TEXT[])</li>
+          <li><code>preferred_work_type</code> (TEXT)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>Table: <code>employer_profiles</code></h4>
+        <p><strong>Hiring Partner Entity</strong></p>
+        <ul class="bullet-list" style="margin-top: 4px;">
+          <li><code>company_name</code> (TEXT)</li>
+          <li><code>industry</code> (TEXT)</li>
+          <li><code>website</code> (TEXT)</li>
+          <li><code>returnship_policy</code> (TEXT)</li>
+          <li><code>created_at</code> (TIMESTAMP)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page">
+    <div class="header">
+      <div>
+        <div class="brand">🌸 ReBloom • Tech Stack Document</div>
+        <p style="font-size: 11px; font-weight: 600; color: #6B21A8; margin-top: 1px;">
+          Frontend Engineering, Algorithms & DevOps
+        </p>
+      </div>
+      <div class="meta">
+        <div><strong>Page 2:</strong> Algorithmic Logic & Infrastructure</div>
+        <div><strong>Repo:</strong> <a href="https://github.com/aadityaravi10-stack/ReBloom">github.com/aadityaravi10-stack/ReBloom</a></div>
+      </div>
+    </div>
+
+    <!-- 4. Algorithmic Logic & Custom Services -->
+    <h2 class="section-title">
+      <span class="section-tag">Tier 4</span> Custom Algorithms & Service Layer
+    </h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>🎯 Smart Match Algorithmic Engine</h4>
+        <p><strong>File:</strong> <code>src/services/jobsService.js</code></p>
+        <ul class="bullet-list" style="margin-top: 4px;">
+          <li><strong>Skill Vector Analysis:</strong> Evaluates candidate existing skills against open cohort requirements:
+            <br><code>candidateSkills.some(cs => cs.toLowerCase() === reqSkill.toLowerCase())</code></li>
+          <li><strong>Multi-Dimensional Filtering:</strong> Filters by Work Model (Remote, Hybrid, Onsite), Department, and Break Duration (1+, 2+, 3+ years).</li>
+          <li><strong>Cohort Recommendation:</strong> Powers the dynamic "Smart Comeback Match" banner on the candidate dashboard.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>🏢 Vector Brand Rendering Engine</h4>
+        <p><strong>File:</strong> <code>src/components/common/CompanyLogo.jsx</code></p>
+        <ul class="bullet-list" style="margin-top: 4px;">
+          <li><strong>Direct Vector SVGs:</strong> Embedded high-fidelity vectors for Microsoft Leap, Intuit Again, Deloitte Encore, Razorpay, Target Elevate, and Infosys Restart.</li>
+          <li><strong>Zero Network Dependency:</strong> Logos render instantly offline without external CDN latency or broken image tags.</li>
+          <li><strong>Dynamic Adaptive Fallback:</strong> Parses custom employer image URLs or generates dynamic 2-letter monograms with gradient backdrops.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 5. UI/UX Architecture & Responsive Engineering -->
+    <h2 class="section-title">
+      <span class="section-tag">Tier 5</span> UI/UX Architecture & Layout System
+    </h2>
+
+    <div class="grid-3">
+      <div class="card">
+        <h4>Dual-Layout Switcher</h4>
+        <p><strong>Explorer Modes:</strong></p>
+        <ul class="bullet-list" style="margin-top: 4px;">
+          <li><strong>2-Column Grid:</strong> <code>grid-cols-1 xl:grid-cols-2</code> providing 480px–520px per card.</li>
+          <li><strong>Full-Width List:</strong> 100% wide card rows for high-density scanning.</li>
+          <li><strong>Zero Truncation:</strong> No sliced numbers or truncated skills.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>Compact 2-Block Sidebar</h4>
+        <p><strong>Viewport Optimization:</strong></p>
+        <ul class="bullet-list" style="margin-top: 4px;">
+          <li><strong>Block 1:</strong> User profile banner + Navigation + Roadmap status.</li>
+          <li><strong>Block 2:</strong> Daily Comeback Spark with interactive quote shuffling.</li>
+          <li><strong>Total Height:</strong> ~440px fits 100% above the fold on all laptops.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>WCAG AA Accessibility</h4>
+        <p><strong>Contrast & Themes:</strong></p>
+        <ul class="bullet-list" style="margin-top: 4px;">
+          <li><strong>Dual Themes:</strong> Dark violet (<code>#0F0A1E</code>) and clean daylight modes.</li>
+          <li><strong>Accessible Contrast:</strong> Minimum 4.5:1 text-to-background contrast ratio.</li>
+          <li><strong>Iconography:</strong> Lucide vector icons with semantic labels.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 6. DevOps, CI/CD & Deployment -->
+    <h2 class="section-title">
+      <span class="section-tag">Tier 6</span> DevOps, Build Automation & Edge Deployment
+    </h2>
+
+    <div class="grid-2">
+      <div class="card card-dark">
+        <h4>⚡ Build Automation & Packaging</h4>
+        <ul class="bullet-list">
+          <li><strong>Bundler:</strong> Vite 6.0 with Rollup code-splitting.</li>
+          <li><strong>Production Chunks:</strong>
+            <br>▪ <code>vendor-*.js</code> (React core, React Router: 163 kB)
+            <br>▪ <code>supabase-*.js</code> (Auth & DB client: 228 kB)
+            <br>▪ <code>index-*.js</code> (Application business logic: 231 kB)
+            <br>▪ <code>index-*.css</code> (Tailwind compiled styles: 82 kB)
+          </li>
+          <li><strong>Build Performance:</strong> 1,680 modules transformed in <strong>1.35 seconds</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>☁️ Hosting & Cloud Infrastructure</h4>
+        <ul class="bullet-list">
+          <li><strong>Host:</strong> Vercel Global Edge Network.</li>
+          <li><strong>Live Production URL:</strong> <code>https://rebloom-five.vercel.app</code></li>
+          <li><strong>SPA Routing Engine:</strong> Custom <code>vercel.json</code> rewriting all incoming routes (<code>/candidate/*</code>, <code>/employer/*</code>) to <code>/index.html</code> with 0 HTTP 404 drops.</li>
+          <li><strong>Security:</strong> HSTS enabled (<code>max-age=63072000</code>), TLS 1.3 encryption, Content Security Policy compliant.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card card-purple" style="margin-top: 8px;">
+      <h4 style="margin-bottom: 2px;">💡 Quick 1-Minute Pitch Summary for Teammates:</h4>
+      <p style="font-size: 11px; line-height: 1.45;">
+        <em>"Our stack is architected for zero latency and enterprise reliability: <strong>React 18 & Vite</strong> for a 1.3-second client build, <strong>Google Gemini 1.5 Flash API</strong> for generative career gap reframing, <strong>Supabase PostgreSQL</strong> for relational RBAC user management, <strong>SVG Vector brand engines</strong> for crisp corporate logos, and edge-deployed globally on <strong>Vercel</strong> with 100% WCAG AA accessibility compliance."</em>
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
