@@ -7,7 +7,6 @@ import MarqueeStrip from './sections/MarqueeStrip';
 import AboutSection from './sections/AboutSection';
 import HowItWorksSection from './sections/HowItWorksSection';
 import FeaturesPreviewSection from './sections/FeaturesPreviewSection';
-import SuccessStoriesSection from './sections/SuccessStoriesSection';
 import CtaSection from './sections/CtaSection';
 
 export default function HomePage() {
@@ -21,7 +20,6 @@ export default function HomePage() {
         <AboutSection />
         <HowItWorksSection />
         <FeaturesPreviewSection />
-        <SuccessStoriesSection />
         <CtaSection />
       </main>
       <Footer />
