@@ -121,17 +121,17 @@ export default function ReturnshipExplorerPage() {
         )}
 
         {/* Search & Filters Card */}
-        <Card className="p-5 space-y-4">
+        <Card className="p-4 sm:p-5 space-y-4">
           <div className="flex flex-col md:flex-row gap-3">
             {/* Search Input */}
             <div className="relative flex-1">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search returnships by title, skills (e.g. React, Python), or company..."
-                className="w-full rounded-xl border border-purple-200/80 dark:border-purple-800/60 bg-white dark:bg-[#18132C] pl-10 pr-4 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                className="h-11 w-full rounded-xl border border-purple-200/80 dark:border-purple-800/60 bg-white dark:bg-[#18132C] pl-10 pr-4 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-2xs"
               />
             </div>
 
@@ -139,7 +139,7 @@ export default function ReturnshipExplorerPage() {
             <select
               value={workTypeFilter}
               onChange={(e) => setWorkTypeFilter(e.target.value)}
-              className="rounded-xl border border-purple-200/80 dark:border-purple-800/60 bg-white dark:bg-[#18132C] px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="h-11 rounded-xl border border-purple-200/80 dark:border-purple-800/60 bg-white dark:bg-[#18132C] px-3.5 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-2xs shrink-0"
             >
               <option value="All">All Work Models</option>
               <option value="Remote">100% Remote</option>
@@ -151,7 +151,7 @@ export default function ReturnshipExplorerPage() {
             <select
               value={departmentFilter}
               onChange={(e) => setDepartmentFilter(e.target.value)}
-              className="rounded-xl border border-purple-200/80 dark:border-purple-800/60 bg-white dark:bg-[#18132C] px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="h-11 rounded-xl border border-purple-200/80 dark:border-purple-800/60 bg-white dark:bg-[#18132C] px-3.5 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-2xs shrink-0"
             >
               <option value="All">All Departments</option>
               <option value="Engineering">Engineering & Cloud</option>
@@ -165,7 +165,7 @@ export default function ReturnshipExplorerPage() {
             <select
               value={breakFilter}
               onChange={(e) => setBreakFilter(e.target.value)}
-              className="rounded-xl border border-purple-200/80 dark:border-purple-800/60 bg-white dark:bg-[#18132C] px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="h-11 rounded-xl border border-purple-200/80 dark:border-purple-800/60 bg-white dark:bg-[#18132C] px-3.5 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-2xs shrink-0"
             >
               <option value="All">Any Break Duration</option>
               <option value="1+ Years">1+ Years Break</option>
