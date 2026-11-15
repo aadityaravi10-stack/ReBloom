@@ -17,12 +17,14 @@ import Card from '../../components/common/Card';
 import Button from '../../components/common/Button';
 import StatCard from '../../components/dashboard/StatCard';
 import { calculateEmployerCompletion } from '../../utils/helpers';
+import { jobsService } from '../../services/jobsService';
 
 export default function EmployerDashboardPage() {
   const { user, profile, employerProfile } = useAuth();
 
   const completionPercent = calculateEmployerCompletion(profile, employerProfile);
   const companyName = employerProfile?.company_name || profile?.full_name || 'Hiring Partner';
+  const activeJobsCount = jobsService.getAllJobs().length;
 
   return (
     <DashboardLayout
@@ -42,8 +44,8 @@ export default function EmployerDashboardPage() {
           />
           <StatCard
             title="Active Job Postings"
-            value="0"
-            subtitle="Job posting coming soon"
+            value={activeJobsCount}
+            subtitle="Live returnship cohorts"
             icon={Briefcase}
           />
           <StatCard
@@ -106,31 +108,40 @@ export default function EmployerDashboardPage() {
           </div>
         </Card>
 
-        {/* Placeholder for Job Posting functionality */}
-        <Card className="p-8 border-dashed border-2 border-purple-200 dark:border-purple-800 bg-white/60 dark:bg-[#130E24]/60 text-center">
+        {/* Returnship Posting Engine Card */}
+        <Card className="p-8 border border-purple-200/80 dark:border-purple-800/40 bg-gradient-to-br from-purple-50/50 via-white to-pink-50/30 dark:from-[#18132C] dark:via-[#140E24] dark:to-[#1B1433] text-center shadow-sm">
           <div className="max-w-md mx-auto space-y-4">
-            <div className="w-14 h-14 rounded-3xl bg-purple-100 dark:bg-purple-900/60 text-purple-700 dark:text-purple-300 flex items-center justify-center mx-auto shadow-xs">
+            <div className="w-14 h-14 rounded-3xl bg-gradient-to-tr from-purple-600 to-pink-500 text-white flex items-center justify-center mx-auto shadow-md">
               <PlusCircle className="w-7 h-7" />
             </div>
 
             <div>
-              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-purple-700 dark:text-purple-300 bg-purple-100/70 dark:bg-purple-950/70 px-2.5 py-1 rounded-full border border-purple-200 dark:border-purple-800 mb-2">
-                <Lock className="w-3 h-3 text-purple-500" /> Coming Soon
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 px-2.5 py-0.5 rounded-full border border-emerald-300 dark:border-emerald-700 mb-2">
+                <Sparkles className="w-3.5 h-3.5" /> Returnship Engine Live
               </span>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white">Post a Returnship or Flexible Role</h3>
+              <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
+                Post a Returnship or Flexible Cohort
+              </h3>
               <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed font-medium">
-                The job creation engine, candidate ATS, and AI-powered matchmaker are coming soon. Employers will be able to post targeted 3-6 month returnships and remote roles.
+                Create structured 30-60-90 day ramp-up cohorts, specify mentorship support, and connect directly with high-retention women professionals relaunching their careers.
               </p>
             </div>
 
-            <div className="pt-2">
-              <Button
-                variant="secondary"
-                size="md"
-                onClick={() => alert("Job Posting Engine is coming soon. Your employer profile is verified and ready for posting!")}
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link
+                to="/employer/jobs/new"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold shadow-md hover:shadow-lg transition-all"
               >
-                Preview Job Posting Form (Coming Soon)
-              </Button>
+                <PlusCircle className="w-4 h-4" />
+                <span>Publish New Cohort</span>
+              </Link>
+              <Link
+                to="/employer/jobs"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-6 py-2.5 rounded-xl border border-purple-200 dark:border-purple-800 hover:bg-purple-50 dark:hover:bg-purple-950/50 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all"
+              >
+                <Users className="w-4 h-4 text-purple-500" />
+                <span>View Applicants & Cohorts</span>
+              </Link>
             </div>
           </div>
         </Card>

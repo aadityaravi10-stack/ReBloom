@@ -69,11 +69,13 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
   const navItems = isCandidate
     ? [
         { name: 'Dashboard', path: '/candidate/dashboard', icon: LayoutDashboard },
+        { name: 'Returnship Explorer', path: '/candidate/jobs', icon: Briefcase },
         { name: 'My Profile', path: '/candidate/profile', icon: UserCheck },
         { name: 'AI Career Studio', path: '/candidate/tools', icon: Sparkles },
       ]
     : [
         { name: 'Dashboard', path: '/employer/dashboard', icon: LayoutDashboard },
+        { name: 'Manage Returnships', path: '/employer/jobs', icon: Briefcase },
         { name: 'Company Profile', path: '/employer/profile', icon: Building2 },
       ];
 
@@ -195,12 +197,12 @@ export default function DashboardLayout({ children, role = 'candidate', title, s
                     Live
                   </span>
                 </div>
-                <div className="flex items-center justify-between py-1 opacity-70">
-                  <span className="flex items-center gap-2">
-                    <Briefcase className="w-3.5 h-3.5" /> Returnship Match
+                <div className="flex items-center justify-between py-1">
+                  <span className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold">
+                    <Briefcase className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> Returnship Match
                   </span>
-                  <span className="text-[10px] bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 px-1.5 py-0.5 rounded">
-                    Coming Soon
+                  <span className="text-[10px] font-bold bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 px-1.5 py-0.5 rounded border border-emerald-300 dark:border-emerald-800">
+                    Live
                   </span>
                 </div>
                 <div className="flex items-center justify-between py-1 opacity-70">

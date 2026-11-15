@@ -20,7 +20,7 @@ import CareerJourneyTimeline from '../../components/dashboard/CareerJourneyTimel
 import NextStepsCard from '../../components/dashboard/NextStepsCard';
 import FeatureShortcutCard from '../../components/dashboard/FeatureShortcutCard';
 import RecentActivityCard from '../../components/dashboard/RecentActivityCard';
-import JobRecommendationsPlaceholder from '../../components/dashboard/JobRecommendationsPlaceholder';
+import LiveReturnshipsSection from '../../components/dashboard/LiveReturnshipsSection';
 import LearningProgressPlaceholder from '../../components/dashboard/LearningProgressPlaceholder';
 import StatCard from '../../components/dashboard/StatCard';
 import { calculateCandidateCompletion, formatBreakDuration, formatExperience } from '../../utils/helpers';
@@ -128,7 +128,8 @@ export default function CandidateDashboardPage() {
               title="Returnship Explorer"
               description="Browse companies offering paid 3-6 month return-to-work programs."
               iconName="Briefcase"
-              badge="Coming Soon"
+              badge="Active Hub"
+              linkTo="/candidate/jobs"
             />
             <FeatureShortcutCard
               title="Skill Refresher Lab"
@@ -139,9 +140,9 @@ export default function CandidateDashboardPage() {
           </div>
         </div>
 
-        {/* Future Job Recommendations & Learning Progress Placeholders */}
+        {/* Live Returnships & Learning Progress */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <JobRecommendationsPlaceholder />
+          <LiveReturnshipsSection candidateProfile={candidateProfile} />
           <LearningProgressPlaceholder />
         </div>
       </div>

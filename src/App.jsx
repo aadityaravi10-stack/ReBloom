@@ -12,8 +12,11 @@ import ForgotPasswordPage from './pages/Auth/ForgotPasswordPage';
 import CandidateDashboardPage from './pages/Candidate/CandidateDashboardPage';
 import CandidateProfilePage from './pages/Candidate/CandidateProfilePage';
 import CareerToolsPage from './pages/Candidate/CareerToolsPage';
+import ReturnshipExplorerPage from './pages/Candidate/ReturnshipExplorerPage';
 import EmployerDashboardPage from './pages/Employer/EmployerDashboardPage';
 import EmployerProfilePage from './pages/Employer/EmployerProfilePage';
+import EmployerJobsManagementPage from './pages/Employer/EmployerJobsManagementPage';
+import EmployerJobPostingPage from './pages/Employer/EmployerJobPostingPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
@@ -53,6 +56,14 @@ export default function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/candidate/jobs"
+            element={
+              <ProtectedRoute allowedRole="candidate">
+                <ReturnshipExplorerPage />
+              </ProtectedRoute>
+            }
+          />
 
           {/* Employer Protected Routes */}
           <Route
@@ -68,6 +79,22 @@ export default function App() {
             element={
               <ProtectedRoute allowedRole="employer">
                 <EmployerProfilePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/employer/jobs"
+            element={
+              <ProtectedRoute allowedRole="employer">
+                <EmployerJobsManagementPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/employer/jobs/new"
+            element={
+              <ProtectedRoute allowedRole="employer">
+                <EmployerJobPostingPage />
               </ProtectedRoute>
             }
           />
