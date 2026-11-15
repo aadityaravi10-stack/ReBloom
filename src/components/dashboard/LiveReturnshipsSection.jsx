@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Briefcase, ArrowRight, Clock, MapPin, Sparkles, Compass } from 'lucide-react';
 import Card from '../common/Card';
 import Badge from '../common/Badge';
+import CompanyLogo from '../common/CompanyLogo';
 import { jobsService } from '../../services/jobsService';
 
 export default function LiveReturnshipsSection({ candidateProfile }) {
@@ -38,9 +39,12 @@ export default function LiveReturnshipsSection({ candidateProfile }) {
             className="p-4 rounded-2xl bg-purple-50/40 dark:bg-[#18132C] border border-purple-100 dark:border-purple-800/40 hover:border-purple-300 dark:hover:border-purple-600 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3"
           >
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 text-white font-bold text-lg flex items-center justify-center shrink-0 shadow-xs">
-                {job.logo || '💼'}
-              </div>
+              <CompanyLogo
+                company={job.company}
+                logo={job.logo}
+                size="md"
+                className="w-11 h-11 rounded-xl shrink-0 mt-0.5"
+              />
               <div>
                 <div className="flex items-center gap-2 flex-wrap mb-0.5">
                   <span className="text-xs font-extrabold text-purple-700 dark:text-purple-300">
