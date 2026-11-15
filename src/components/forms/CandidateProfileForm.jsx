@@ -391,7 +391,7 @@ export default function CandidateProfileForm({ onSuccess }) {
       </div>
 
       {/* Section 3: Existing Skills & Interests */}
-      <div className="bg-white dark:bg-[#130E24] p-6 rounded-3xl border border-purple-100 dark:border-purple-800/40 shadow-soft dark:shadow-none space-y-4">
+      <div className="bg-white dark:bg-[#130E24] p-6 rounded-3xl border border-purple-100 dark:border-purple-800/40 shadow-soft dark:shadow-none space-y-6">
         <h3 className="text-base font-bold text-slate-900 dark:text-white border-b border-purple-50 dark:border-purple-900/40 pb-3 flex items-center gap-2">
           <span className="w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-xs flex items-center justify-center font-bold">3</span>
           Skills & Career Interests
@@ -399,17 +399,17 @@ export default function CandidateProfileForm({ onSuccess }) {
 
         {/* Existing Skills */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
-            Existing Skills <span className="text-purple-600">*</span>
+          <label className="block text-sm font-bold text-slate-800 dark:text-slate-100 mb-2">
+            Existing Skills <span className="text-purple-600 dark:text-purple-400">*</span>
           </label>
-          <div className="flex flex-wrap gap-1.5 mb-3">
+          <div className="flex flex-wrap gap-2 mb-3 min-h-[36px] items-center">
             {formData.existing_skills.map((skill) => (
               <Badge key={skill} color="purple" removable onRemove={() => removeSkill(skill)}>
                 {skill}
               </Badge>
             ))}
             {formData.existing_skills.length === 0 && (
-              <span className="text-xs text-gray-400 italic">No skills selected yet. Choose or add below.</span>
+              <span className="text-xs text-slate-400 dark:text-slate-500 italic">No skills selected yet. Choose suggested skills or type your own below.</span>
             )}
           </div>
 
@@ -419,7 +419,7 @@ export default function CandidateProfileForm({ onSuccess }) {
               value={customSkill}
               onChange={(e) => setCustomSkill(e.target.value)}
               placeholder="Add a custom skill (e.g. Python, Figma, Strategic Planning)"
-              className="flex-1 rounded-xl border border-purple-100 px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="flex-1 rounded-xl border border-purple-200/80 dark:border-purple-700/60 bg-white dark:bg-[#18132C] px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-500 transition-colors shadow-2xs"
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   e.preventDefault();
@@ -427,25 +427,25 @@ export default function CandidateProfileForm({ onSuccess }) {
                 }
               }}
             />
-            <Button
-              variant="secondary"
-              size="sm"
-              icon={Plus}
+            <button
+              type="button"
               onClick={() => addSkill(customSkill.trim())}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 active:scale-95 text-white font-bold text-xs shadow-sm hover:shadow-md transition-all cursor-pointer shrink-0"
             >
-              Add
-            </Button>
+              <Plus className="w-4 h-4" />
+              <span>Add</span>
+            </button>
           </div>
 
-          <div className="space-y-1">
-            <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Suggested Skills:</span>
-            <div className="flex flex-wrap gap-1.5 pt-1">
+          <div className="space-y-1.5">
+            <span className="text-[11px] font-bold text-purple-700 dark:text-purple-300 uppercase tracking-wider">Suggested Skills:</span>
+            <div className="flex flex-wrap gap-2 pt-1">
               {POPULAR_SKILLS.filter((s) => !formData.existing_skills.includes(s)).slice(0, 10).map((skill) => (
                 <button
                   key={skill}
                   type="button"
                   onClick={() => addSkill(skill)}
-                  className="text-xs bg-purple-50/70 hover:bg-purple-100 text-purple-700 px-2.5 py-1 rounded-lg border border-purple-100 transition-colors"
+                  className="text-xs font-semibold bg-white hover:bg-purple-50 dark:bg-[#1B1433] dark:hover:bg-purple-900/40 text-purple-700 dark:text-purple-300 hover:text-purple-900 dark:hover:text-purple-100 px-3 py-1.5 rounded-xl border border-purple-200/80 dark:border-purple-700/60 hover:border-purple-400 dark:hover:border-purple-500 shadow-2xs transition-all cursor-pointer"
                 >
                   + {skill}
                 </button>
@@ -453,30 +453,33 @@ export default function CandidateProfileForm({ onSuccess }) {
             </div>
           </div>
           {errors.existing_skills && (
-            <p className="mt-1.5 text-xs text-rose-600 font-medium">• {errors.existing_skills}</p>
+            <p className="mt-1.5 text-xs text-rose-600 dark:text-rose-400 font-semibold">• {errors.existing_skills}</p>
           )}
         </div>
 
         {/* Career Interests */}
-        <div className="pt-4 border-t border-purple-50">
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+        <div className="pt-5 border-t border-purple-100 dark:border-purple-900/40">
+          <label className="block text-sm font-bold text-slate-800 dark:text-slate-100 mb-2">
             Target Career Tracks & Interests
           </label>
-          <div className="flex flex-wrap gap-1.5 mb-3">
+          <div className="flex flex-wrap gap-2 mb-3 min-h-[36px] items-center">
             {formData.career_interests.map((interest) => (
-              <Badge key={interest} color="peach" removable onRemove={() => removeInterest(interest)}>
+              <Badge key={interest} color="pink" removable onRemove={() => removeInterest(interest)}>
                 {interest}
               </Badge>
             ))}
+            {formData.career_interests.length === 0 && (
+              <span className="text-xs text-slate-400 dark:text-slate-500 italic">Select career tracks or add a specialized focus below.</span>
+            )}
           </div>
 
-          <div className="flex gap-2 mb-2">
+          <div className="flex gap-2 mb-3">
             <input
               type="text"
               value={customInterest}
               onChange={(e) => setCustomInterest(e.target.value)}
               placeholder="Target role or domain (e.g. AI Product Manager, Full Stack Developer)"
-              className="flex-1 rounded-xl border border-purple-100 px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="flex-1 rounded-xl border border-pink-200/80 dark:border-pink-800/60 bg-white dark:bg-[#18132C] px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:focus:ring-pink-500 transition-colors shadow-2xs"
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   e.preventDefault();
@@ -484,27 +487,30 @@ export default function CandidateProfileForm({ onSuccess }) {
                 }
               }}
             />
-            <Button
-              variant="secondary"
-              size="sm"
-              icon={Plus}
+            <button
+              type="button"
               onClick={() => addInterest(customInterest.trim())}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-700 active:scale-95 text-white font-bold text-xs shadow-sm hover:shadow-md transition-all cursor-pointer shrink-0"
             >
-              Add
-            </Button>
+              <Plus className="w-4 h-4" />
+              <span>Add</span>
+            </button>
           </div>
 
-          <div className="flex flex-wrap gap-1.5 pt-1">
-            {POPULAR_INTERESTS.filter((i) => !formData.career_interests.includes(i)).map((interest) => (
-              <button
-                key={interest}
-                type="button"
-                onClick={() => addInterest(interest)}
-                className="text-xs bg-orange-50/70 hover:bg-orange-100 text-orange-800 px-2.5 py-1 rounded-lg border border-orange-100 transition-colors"
-              >
-                + {interest}
-              </button>
-            ))}
+          <div className="space-y-1.5">
+            <span className="text-[11px] font-bold text-pink-700 dark:text-pink-300 uppercase tracking-wider">Suggested Career Tracks:</span>
+            <div className="flex flex-wrap gap-2 pt-1">
+              {POPULAR_INTERESTS.filter((i) => !formData.career_interests.includes(i)).map((interest) => (
+                <button
+                  key={interest}
+                  type="button"
+                  onClick={() => addInterest(interest)}
+                  className="text-xs font-semibold bg-white hover:bg-pink-50 dark:bg-[#1B1433] dark:hover:bg-pink-950/50 text-pink-700 dark:text-pink-300 hover:text-pink-900 dark:hover:text-pink-100 px-3 py-1.5 rounded-xl border border-pink-200/80 dark:border-pink-800/60 hover:border-pink-400 dark:hover:border-pink-500 shadow-2xs transition-all cursor-pointer"
+                >
+                  + {interest}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
