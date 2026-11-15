@@ -18,6 +18,14 @@
 ::-webkit-scrollbar-thumb { background: #a855f7; border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: #9333ea; }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* ── Animated gradient mesh ── */
 @keyframes mesh {
   0%, 100% { background-position: 0% 50%; }
